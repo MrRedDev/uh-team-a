@@ -27,7 +27,7 @@ This command will create the branch and move you to the branch ready to work.
 
 I have also added a folder to the project which contains the Codeignitor
 framework. I have also followed the first part of this tutorial to add some
-routing and additional pages.
+routing and additional pages. http://www.codeigniter.com/user_guide/tutorial/static_pages.html
 
 Downloading MAMP or WAMP and placing the project repo inside MAMPS htdoc folder will
 start up the application.
