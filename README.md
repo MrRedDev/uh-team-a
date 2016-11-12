@@ -1,7 +1,7 @@
 # UH-Team-A
 Spa Resource Management System Prototype Project
 
-## Some basic Git commands and project setup.
+### Some basic Git commands and project setup.
 
 Once you have created a directory on your computer for the project,
 Navigate to the team repository setup by Mark and click the green button
@@ -19,3 +19,15 @@ safe, as developers we create another branch from the master and perform our cod
 ready we create merge requests to the master branch which can then be code reviewed by each other.
 Once the team is happy with the changes the code can be merged and the feature branch deleted.
 We continue in this way until all features are completed.
+
+To create a branch type: git checkout -b {your chosen branch name}
+This command will create the branch and move you to the branch ready to work.
+
+### Codeignitor directory
+
+I have also added a folder to the project which contains the Codeignitor
+framework. I have also followed the first part of this tutorial to add some
+routing and additional pages.
+
+Downloading MAMP or WAMP and placing the project repo inside MAMPS htdoc folder will
+start up the application.
