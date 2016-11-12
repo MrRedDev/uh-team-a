@@ -11,3 +11,11 @@ project directory.
  *** { } These braces indicate other text, they are not required. ***
 
 From a terminal you can type: git clone {and paste the url proved by the green button}
+
+This will perform a request for the resources from Git to be placed into your directory.
+
+You are now on what's known as the master branch of the repository. The master branch is to be kept
+safe, as developers we create another branch from the master and perform our coding on them. When
+ready we create merge requests to the master branch which can then be code reviewed by each other.
+Once the team is happy with the changes the code can be merged and the feature branch deleted.
+We continue in this way until all features are completed.
