@@ -32,4 +32,4 @@ And clone the repo into the htdoc folder of the application MAMP or WAMP.
 
 
 ## Remember to never push directly to the master branch.
-Always push a branch that can be pier reviewed.
+Always push a branch that can be peer reviewed.
