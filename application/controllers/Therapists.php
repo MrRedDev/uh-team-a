@@ -1,4 +1,3 @@
-
 <?php
 class Therapists extends CI_Controller {
 
@@ -11,66 +10,57 @@ class Therapists extends CI_Controller {
 
   public function index()
   {
-    // The app will look better with some features like adding
-    // to be all on one page. So lots of code inside index method.
+
+    $data['therapists'] = $this->therapist_model->get_therapists();
+    $data['title'] = 'Therapist list';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('therapists/index', $data);
+    $this->load->view('templates/footer');
+
+  }
+
+
+  public function create()
+  {
+    $this->load->helper('url_helper');
     $this->load->helper('form');
     $this->load->library('form_validation');
 
     $this->form_validation->set_rules('fname', 'First Name', 'required');
     $this->form_validation->set_rules('lname', 'Last Name', 'required');
 
-    $data['therapists'] = $this->therapist_model->get_therapists();
-    $data['title'] = 'Therapist list';
+    $data['title'] = 'Therapist Create';
 
     if ($this->form_validation->run() === FALSE)
     {
+
       $this->load->view('templates/header', $data);
-      $this->load->view('therapists/create');
-      $this->load->view('therapists/index', $data);
-      $this->load->view('templates/therapists/failure');
+      $this->load->view('therapists/create', $data);
       $this->load->view('templates/footer');
+
     }
     else {
-      $this->therapist_model->add_therapist();
 
+      $postData = array(
+          'f_name' => $this->input->post('fname'),
+          'l_name' => $this->input->post('lname')
+      );
+
+      // $this->session->set_flashdata('postdata', $postData);
+      $this->therapist_model->add_therapist($postData);
+      redirect('http://localhost:8888/UH-Team-A/index.php/therapists');
+
+      // $this->index();
       // $this->load->view('templates/header', $data);
-      // $this->load->view('therapists/create');
-      // $this->load->view('therapists/index', $data);
-      $this->load->view('templates/therapists/success');
+      // $this->load->view('therapists/create', $data);
       // $this->load->view('templates/footer');
-    }
-  }
+      // $this->load->view('templates/therapists/success');
 
-  public function view($name = NULL)
-  {
-    $data['therapist_item'] = $this->therapist_model->get_therapists($name);
-
-    if (empty($data['therapist_item']))
-    {
-      show_404();
     }
 
-    $data['title'] = 'Therapist: ' . $data['therapist_item']['f_name'];
-
-    $this->load->view('templates/header', $data);
-    $this->load->view('therapists/view', $data);
-    $this->load->view('templates/footer');
   }
 
 
-  public function create()
-  {
-    // create page
-  }
-
-  public function update($name, $l_name)
-  {
-    // update page
-  }
-
-  public function delete($name, $l_name)
-  {
-    // delete page
-  }
 
 }

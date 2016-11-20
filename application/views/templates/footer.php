@@ -1,5 +1,7 @@
 
+    <div class="container">
+      <em>&copy; <?php echo date("Y"); ?></em>
 
-    <em>&copy; 2015</em>
+    </div>
   </body>
 </html>

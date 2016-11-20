@@ -1,4 +1,3 @@
-
 <?php
 class Therapist_model extends CI_Model {
 
@@ -6,7 +5,6 @@ class Therapist_model extends CI_Model {
   {
     $this->load->database();
   }
-
 
   public function get_therapists($name = FALSE)
   {
@@ -22,14 +20,8 @@ class Therapist_model extends CI_Model {
   }
 
 
-  public function add_therapist()
+  public function add_therapist($data)
   {
-
-    $data = array(
-        'f_name' => $this->input->post('fname'),
-        'l_name' => $this->input->post('lname')
-    );
-
     return $this->db->insert('therapists', $data);
   }
 

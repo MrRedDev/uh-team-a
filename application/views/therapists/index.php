@@ -11,29 +11,51 @@
 
 </form> -->
 
-<table class="table table-striped">
-  <th colspan="2">
-    <h4>Therapists</h4>
-  </th>
-  <tr>
-    <th>
-      <h4>First Name</h4>
-    </th>
-    <th>
-      <h4>Last Name</h4>
-    </th>
-  </tr>
+<div class="container">
 
-    <?php foreach ($therapists as $therapist_item): ?>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="">
+        <a href="/UH-Team-A/index.php/therapists/create">Create</a>
+      </li>
+      <li role="presentation">
+        <a href="#">Profile</a>
+      </li>
+      <li role="presentation">
+        <a href="#">Messages</a>
+      </li>
+    </ul>
+  </div>
 
-        <tr>
-          <td>
-            <?php echo $therapist_item['f_name']; ?>
-          </td>
-          <td>
-            <?php echo $therapist_item['l_name']; ?>
-          </td>
-        </tr>
+  <div class="">
 
-    <?php endforeach; ?>
-</table>
+    <table class="table table-striped">
+      <th colspan="2">
+        <h4>Therapists</h4>
+      </th>
+      <tr>
+        <th>
+          <h4>First Name</h4>
+        </th>
+        <th>
+          <h4>Last Name</h4>
+        </th>
+      </tr>
+
+        <?php foreach ($therapists as $therapist_item): ?>
+
+            <tr>
+              <td>
+                <?php echo $therapist_item['f_name']; ?>
+              </td>
+              <td>
+                <?php echo $therapist_item['l_name']; ?>
+              </td>
+            </tr>
+
+        <?php endforeach; ?>
+    </table>
+
+  </div>
+
+</div>
