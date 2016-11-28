@@ -8,6 +8,7 @@ class Therapists extends CI_Controller {
     $this->load->helper('url_helper');
   }
 
+
   public function index()
   {
 
@@ -62,5 +63,10 @@ class Therapists extends CI_Controller {
   }
 
 
+  public function delete()
+  {
+    $therapist = $this->uri->segment(3);
+    $this->therapist_model->delete_therapist($therapist);
+  }
 
 }

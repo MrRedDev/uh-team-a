@@ -51,6 +51,9 @@
               <td>
                 <?php echo $therapist_item['l_name']; ?>
               </td>
+              <td>
+                <?php echo anchor('therapists/delete/'.$therapist_item['id'], $therapist_item['f_name']) ?>
+              </td>
             </tr>
 
         <?php endforeach; ?>

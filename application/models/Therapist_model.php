@@ -25,4 +25,10 @@ class Therapist_model extends CI_Model {
     return $this->db->insert('therapists', $data);
   }
 
+
+  public function delete_therapist($name)
+  {
+    $this->db->where('therapists', $name);
+  }
+
 }
