@@ -1,0 +1,16 @@
+.form-create-account {
+  width: 250px;
+  margin: 50px auto;
+}
+
+.form-create-account h1 {
+  width: 100%;
+  font-size: 35px;
+}
+
+.form-create-account input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
