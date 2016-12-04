@@ -9,6 +9,7 @@ class Membership_model extends CI_Model
 
     if ($query->num_rows() == 1)
     {
+      // get details about user and return
       return true;
     }
   }

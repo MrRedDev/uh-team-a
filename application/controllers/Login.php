@@ -25,11 +25,15 @@ class Login extends CI_Controller {
     $this->load->model('membership_model');
     $query = $this->membership_model->validate();
 
+    // query will return role data
+    // add role to $data
+    // use role to hide or show certain content
     if ($query)
     {
       $data = array(
         'username' => $this->input->post('username'),
-        'is_logged_in' => true
+        'is_logged_in' => true,
+        'role' => ''
       );
 
       $this->session->set_userdata($data);

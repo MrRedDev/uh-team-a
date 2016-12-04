@@ -1,6 +1,12 @@
 # UH-Team-A
 Spa Resource Management System Prototype Project
 
+## Login System
+For this to work you will need a DB named uni_spa with a table named membership.
+(These names will be changed to match our schemas of course)
+The table will need the fields; first_name, last_name, email_address, password, username
+and the auto increment id field as standard. navigate your URL to http://localhost:8888/uh-team-a/index.php/login
+
 ### Some basic Git commands and project setup.
 
 Once you have created a directory on your computer for the project,
