@@ -8,12 +8,20 @@ class Site extends CI_Controller {
       $this->load->library('session');
       $this->load->helper('url_helper');
       $this->load->helper('html');
+
+      // run this to check session on page load
       $this->is_logged_in();
     }
 
     function members_area()
     {
-      $this->load->view('login/members');
+      $this->load->helper('form');
+
+      $data = array(
+        'username' => 'phil'
+      );
+
+      $this->load->view('site/members', $data);
     }
 
     // Checking session data, so if cookie romoved can't access.
@@ -27,6 +35,12 @@ class Site extends CI_Controller {
         echo 'You don\'t have correct permissions. <a href="../login">Login</a>';
         die();
       }
+    }
+
+    function logout()
+    {
+      $this->session->unset_userdata('is_logged_in');
+      redirect('login/index');
     }
 
 }

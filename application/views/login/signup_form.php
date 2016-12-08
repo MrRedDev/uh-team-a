@@ -36,7 +36,7 @@
           'value' => set_value('username'),
           'placeholder' => 'Username'
         ));
-        echo form_input(array(
+        echo form_password(array(
           'name' => 'password',
           'value' => set_value('password'),
           'placeholder' => 'Password'
