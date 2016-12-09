@@ -16,13 +16,13 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href='<?php echo site_url('')?>'>Home</a></li>
 	    	    	<li><a href='<?php echo site_url('staff')?>'>Staff</a></li>
-					<li><a href='<?php echo site_url('')?>'>Qualifications</a></li>
-					<li><a href='<?php echo site_url('')?>'>Therapist Qualif.</a></li>
-					<li><a href='<?php echo site_url('pages/equipment')?>'>Equipment</a></li>
-	    	    	<li><a href='<?php echo site_url('pages/therapyEquip')?>'>Therapy Equipment</a></li>
-		    	    <li><a href='<?php echo site_url('pages/therapy')?>'>Therapy</a></li>
-    		    	<li><a href='<?php echo site_url('pages/therapySession')?>'>Therapy Session</a></li>
-	    		    <li><a href='<?php echo site_url('pages/room')?>'>Room</a></li>
+					<li><a href='<?php echo site_url('')?>'>3</a></li>
+					<li><a href='<?php echo site_url('')?>'>4</a></li>
+					<li><a href='<?php echo site_url('')?>'>5</a></li>
+	    	    	<li><a href='<?php echo site_url('')?>'>6</a></li>
+		    	    <li><a href='<?php echo site_url('')?>'>7</a></li>
+    		    	<li><a href='<?php echo site_url('')?>'>8</a></li>
+	    		    <li><a href='<?php echo site_url('')?>'>9</a></li>
 	        	</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href='<?php echo site_url('')?>'>to be set</a></li>

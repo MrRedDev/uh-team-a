@@ -25,7 +25,7 @@ class Staff extends CI_Controller {
 	    $data['title'] = ucfirst($page); // Capitalize the first letter
 
 	    $this->load->view('templates/header', $data);
-    	$this->load->view('pages/'.$page, $data);
+    	$this->load->view('pages/' .$page, $data);
     	$this->load->view('templates/footer', $data);
 
   	}
@@ -42,6 +42,8 @@ class Staff extends CI_Controller {
        // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
+
+        $this->load->view('templates/header');
         $crud->set_theme('flexigrid');
 
         //table name exact from database
@@ -64,7 +66,9 @@ class Staff extends CI_Controller {
         $crud->required_fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
 
         $output = $crud->render();
-        $this->staff_output($output);
+		$this->staff_output($output);
+		
+        $this->load->view('templates/footer');
     }
 
 }
