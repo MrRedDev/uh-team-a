@@ -1,18 +1,32 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>CodeIgniter Tutorial</title>
+<head>
+	<meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/css/bootstrap.min.css"); ?>">
+  <script src="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/js/bootstrap.min.js"); ?>"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <title>Spa Resource Management System Prototype</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="<?php echo site_url('')?>">SRMS Prototype</a>
+			</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href='<?php echo site_url('')?>'>Home</a></li>
+	    	    	<li><a href='<?php echo site_url('staff')?>'>Staff</a></li>
+					<li><a href='<?php echo site_url('')?>'>Qualifications</a></li>
+					<li><a href='<?php echo site_url('')?>'>Therapist Qualif.</a></li>
+					<li><a href='<?php echo site_url('pages/equipment')?>'>Equipment</a></li>
+	    	    	<li><a href='<?php echo site_url('pages/therapyEquip')?>'>Therapy Equipment</a></li>
+		    	    <li><a href='<?php echo site_url('pages/therapy')?>'>Therapy</a></li>
+    		    	<li><a href='<?php echo site_url('pages/therapySession')?>'>Therapy Session</a></li>
+	    		    <li><a href='<?php echo site_url('pages/room')?>'>Room</a></li>
+	        	</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href='<?php echo site_url('')?>'>to be set</a></li>
+				</ul>
+			</div>	
+		</nav>
 
-        <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      </head>
-  <body>
-
-    <div class="jumbotron">
-      <h1><?php echo $title; ?></h1>
-    </div>
