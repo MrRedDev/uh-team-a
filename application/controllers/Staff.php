@@ -67,7 +67,7 @@ class Staff extends CI_Controller {
 
         $output = $crud->render();
 		$this->staff_output($output);
-		
+
         $this->load->view('templates/footer');
     }
 

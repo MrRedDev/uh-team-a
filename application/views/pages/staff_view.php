@@ -18,3 +18,5 @@
     <div>
 		<?php echo $output; ?>
 	</div>
+	
+</div>
