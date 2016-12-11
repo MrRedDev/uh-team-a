@@ -18,6 +18,11 @@ class Staff extends CI_Controller {
         $this->load->view('pages/staff_view.php', $output);
     }
 
+    public function index()
+    {
+        $this-> staff_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
+    }
+
 	// Staff table is called frome here
     public function staff()
     {

@@ -50,7 +50,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'pages/view';
-$route['staff'] = 'staff/staff';
-$route['addStaff'] = 'addStaff/addStaff';
+//$route['staff'] = 'staff/staff';
+//$route['addStaff'] = 'staff/staff/add';
 $route['(:any)'] = 'pages/view/$1';
+//$route['staff/add'] = 'staff/staff/add';
+$route['(:any)/insert'] = 'pages/$1/insert';
+$route['(:any)/insert_validation'] = 'pages/view/$1/insert_validation';
+$route['(:any)/success/:num'] = 'pages/view/$1/success';
+$route['(:any)/delete/:num'] = 'pages/view/$1/delete';
+$route['(:any)/edit/:num'] = 'pages/view/$1/edit';
+$route['(:any)/update_validation/:num'] = 'pages/view/$1/update_validation';
+$route['(:any)/update/:num'] = 'pages/view/$1/update';
+$route['(:any)/ajax_list_info'] = 'pages/view/$1/ajax_list_info';
+$route['(:any)/ajax_list'] = 'pages/view/$1/ajax_list';
+$route['(:any)/read/:num'] = 'pages/view/$1/read';
+$route['(:any)/export'] = 'welcome/$1/export';
 $route['translate_uri_dashes'] = FALSE;

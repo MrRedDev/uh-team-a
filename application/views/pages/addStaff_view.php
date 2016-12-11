@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<h1>Add Therapist</h1>
+	<h1>Add Staff</h1>
     <div>
 		<?php echo $output; ?>
 	</div>
