@@ -16,7 +16,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href='<?php echo site_url('')?>'>Home</a></li>
 	    	    	<li><a href='<?php echo site_url('staff')?>'>Staff</a></li>
-					<li><a href='<?php echo site_url('')?>'>3</a></li>
+					<li><a href='<?php echo site_url('addStaff')?>'>Add Staff</a></li>
 					<li><a href='<?php echo site_url('')?>'>4</a></li>
 					<li><a href='<?php echo site_url('')?>'>5</a></li>
 	    	    	<li><a href='<?php echo site_url('')?>'>6</a></li>
