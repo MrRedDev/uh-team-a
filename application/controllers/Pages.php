@@ -1,24 +1,33 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pages extends CI_Controller
-{
+class Pages extends CI_Controller {
 
-  public function view($page = 'home')
-  {
-
-    if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
+    public function __construct()
     {
-      // Whoops, we don't have a page for that!
-      show_404();
+        parent:: __construct();
+
+        $this->load->database();
+        $this->load->helper('url');
+
+        $this->load->library('grocery_CRUD');
     }
 
-    $data['title'] = ucfirst($page); // Capitalize the first letter
+    public function view($page = 'home')
+    {
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('pages/'.$page, $data);
-    $this->load->view('templates/footer', $data);
+        if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
+        {
+          // Whoops, we don't have a page for that!
+          show_404();
+        }
 
-  }
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/'.$page, $data);
+        $this->load->view('templates/footer', $data);
+
+    }
 
 }

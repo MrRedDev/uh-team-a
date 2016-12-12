@@ -1,18 +1,40 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>CodeIgniter Tutorial</title>
+<head>
+	<meta charset="utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/css/bootstrap.min.css"); ?>">
+  		<script src="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/js/bootstrap.min.js"); ?>"></script>
+  		<title>Spa Resource Management System Prototype</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="<?php echo site_url('')?>">SRMS Prototype</a>
+			</div>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href='<?php echo site_url('')?>'>Home</a></li>
+	    	    	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Staff<span class="caret"></span></a>
+	    	    		<ul class="dropdown-menu">
+	    	    			<li><a href="<?php echo site_url('staff/staff')?>">All Staff</a></li>
+	    	    			<li><a href="<?php echo site_url('staff/staff/add')?>">Add New Staff</a></li>
+	    	    		</ul>
+	    	    	</li>
+					<li><a href='<?php echo site_url('qualifications/qualifications')?>'>Qualifications</a></li>
+					<li><a href='<?php echo site_url('')?>'>4</a></li>
+					<li><a href='<?php echo site_url('')?>'>5</a></li>
+	    	    	<li><a href='<?php echo site_url('')?>'>6</a></li>
+		    	    <li><a href='<?php echo site_url('')?>'>7</a></li>
+    		    	<li><a href='<?php echo site_url('')?>'>8</a></li>
+	    		    <li><a href='<?php echo site_url('')?>'>9</a></li>
+	        	</ul>
 
-        <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href='<?php echo site_url('')?>'>to be set <!--For user login/log out--></a></li>
+				</ul>
+				
+			</div>	
+		</nav>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      </head>
-  <body>
-
-    <div class="jumbotron">
-      <h1><?php echo $title; ?></h1>
-    </div>
