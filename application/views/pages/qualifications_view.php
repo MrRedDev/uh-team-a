@@ -6,10 +6,9 @@
 			<script src="<?php echo $file; ?>"></script>
 		<?php endforeach; ?> </head>
 
-	<h1>Staff</h1>
-    <div class="jumbotron">
+	<h1>Qualifications</h1>
+    <div>
 
 		<?php echo $output; ?>
 	</div>
 	
-

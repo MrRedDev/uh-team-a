@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/css/bootstrap.min.css"); ?>">
-  <script src="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/js/bootstrap.min.js"); ?>"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <title>Spa Resource Management System Prototype</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/css/bootstrap.min.css"); ?>">
+  		<script src="<?php echo base_url("/assets/grocery_crud/themes/bootstrap/js/bootstrap.min.js"); ?>"></script>
+  		<title>Spa Resource Management System Prototype</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -22,7 +22,7 @@
 	    	    			<li><a href="<?php echo site_url('staff/staff/add')?>">Add New Staff</a></li>
 	    	    		</ul>
 	    	    	</li>
-					<li><a href='<?php echo site_url('')?>'>3</a></li>
+					<li><a href='<?php echo site_url('qualifications/qualifications')?>'>Qualifications</a></li>
 					<li><a href='<?php echo site_url('')?>'>4</a></li>
 					<li><a href='<?php echo site_url('')?>'>5</a></li>
 	    	    	<li><a href='<?php echo site_url('')?>'>6</a></li>

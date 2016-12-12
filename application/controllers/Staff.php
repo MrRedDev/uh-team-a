@@ -25,8 +25,9 @@ class Staff extends CI_Controller {
        // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
-
+                $crud->unset_jquery();
         $this->load->view('templates/header');
+
         $crud->set_theme('flexigrid');
 
         //table name exact from database
@@ -42,7 +43,7 @@ class Staff extends CI_Controller {
         $crud->display_as('staffPassword', 'Password');
         $crud->display_as('sPosition', 'Staff Position');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when diabling data instead of deleting
+        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
         $crud->callback_insert('enabled', 'Y'); //Insert default value Y when adding
 
         $crud->fields('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel');
@@ -71,6 +72,8 @@ class Staff extends CI_Controller {
         Need to add if statemnt to check access level is authorised. If level 2/3 enable this control to remove create new staff/therapist data button
         $crud->unset_add();
         */
+
+
         $crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
 		$this->staff_output($output);
@@ -79,3 +82,4 @@ class Staff extends CI_Controller {
     }
 
 }
+?>
