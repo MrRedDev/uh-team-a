@@ -14,8 +14,9 @@
 </head>
 <body>
 
-	<h1>Staff</h1>
+	<h1>Add Therapist</h1>
     <div>
+    <?php $this->load->view('site/nav'); ?>
 
 		<?php echo $output; ?>
 	</div>

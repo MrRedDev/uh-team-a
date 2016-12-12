@@ -18,11 +18,6 @@ class Staff extends CI_Controller {
         $this->load->view('pages/staff_view.php', $output);
     }
 
-    public function index()
-    {
-        $this-> staff_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
-    }
-
 	// Staff table is called frome here
     public function staff()
     {
@@ -43,16 +38,40 @@ class Staff extends CI_Controller {
         $crud->display_as('staffNo', 'STAFF NO.');
         $crud->display_as('fName', 'First Name');
         $crud->display_as('lName', 'Last Name');
-        $crud->display_as('enabled', 'enabled');
         $crud->display_as('staffLogin', 'Username');
         $crud->display_as('staffPassword', 'Password');
         $crud->display_as('sPosition', 'Staff Position');
 
-        $crud->fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
+        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when diabling data instead of deleting
+        $crud->callback_insert('enabled', 'Y'); //Insert default value Y when adding
+
+        $crud->fields('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
+        
+        /* Following function provides a user friendly checkbox with understandable terms. EG level 3 is referred to as a therapist by the SPA. Form should return the the appropriate value when checked after editing or adding
 
+                // Provide a checkbox for access level when adding user
+        $crud->callback_add_field('accessLevel',function () {
+            return '<form>
+                        <input type="checkbox" value="1" name="accessLevel1"> Manager
+                        <input type="checkbox" value="2" name="accessLevel2"> Marketing 
+                        <input type="checkbox" value="3" name="accessLevel3"> Therapist
+                    </form>';
+        });
+        */
+
+        /*
+        Need to add if statemnt to check access level is authorised. If level 3 enable this control to remove delete data button
+        $crud->unset_delete();
+        */
+
+        /*
+        Need to add if statemnt to check access level is authorised. If level 2/3 enable this control to remove create new staff/therapist data button
+        $crud->unset_add();
+        */
+        $crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
 		$this->staff_output($output);
 

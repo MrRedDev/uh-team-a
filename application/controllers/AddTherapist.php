@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AddStaff extends CI_Controller {
+class AddTherapist extends CI_Controller {
 
 	public function __construct(){
 
@@ -13,12 +13,12 @@ class AddStaff extends CI_Controller {
         $this->load->library('grocery_CRUD');
 	}
 
-	public function addStaff_output($output = null)
+	public function addTherapist_output($output = null)
     {
         $this->load->view('pages/addStaff_view.php', $output);
     }
 
-	public function addStaff(){
+	public function addTherapist(){
 
 		$crud = new grocery_CRUD();
  
