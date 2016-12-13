@@ -25,7 +25,7 @@ class Staff extends CI_Controller {
        // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
-                $crud->unset_jquery();
+
         $this->load->view('templates/header');
 
         $crud->set_theme('flexigrid');
@@ -44,24 +44,48 @@ class Staff extends CI_Controller {
         $crud->display_as('sPosition', 'Staff Position');
 
         $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_insert('enabled', 'Y'); //Insert default value Y when adding
+        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
 
         $crud->fields('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
         
-        /* Following function provides a user friendly checkbox with understandable terms. EG level 3 is referred to as a therapist by the SPA. Form should return the the appropriate value when checked after editing or adding
+        $crud->callback_add_field('staffPassword',function () {
+            return '<input type="Password" maxlength="4" value="" style="-webkit-text-security: square;">';
+        });
+        //Following function provides a user friendly checkbox with understandable terms. EG level 3 is referred to as a therapist by the SPA. Form should return the the appropriate value when checked after editing or adding
 
                 // Provide a checkbox for access level when adding user
         $crud->callback_add_field('accessLevel',function () {
-            return '<form>
-                        <input type="checkbox" value="1" name="accessLevel1"> Manager
-                        <input type="checkbox" value="2" name="accessLevel2"> Marketing 
-                        <input type="checkbox" value="3" name="accessLevel3"> Therapist
-                    </form>';
+                return  '<form>
+                        <input type="radio" value="1" name="accessLevel" id="accessLevel1" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "1"): endif; /> Manager 
+                        <input type="radio" value="2" name="accessLevel" id="accessLevel2" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "2"): endif; /> Marketing 
+                        <input type="radio" value="3" name="accessLevel" id="accessLevel3" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "3"): endif; /> Therapist 
+                        </form>';
+
+                        //PHP attempt at assigning value to return and post the value to database when a radio option is selected
+                       /* if(isset($_POST["accessLevel"])){
+                            if(!empty($_POST["1"])){
+                                if(!empty($_POST["2"])){
+                                    if(!empty($_POST["3"]));
+
+                        }}};*/
+                        
+                    /*  <script>if(document.getElementById("accessLevel1").checked) {
+                        //Add code here that will show add new manager_hr details
+                        $value = 1;
+                    } elseif (document.getElementById("accessLevel2").checked) {
+                        //Add code here that will add new marketingStaff details
+                        $value = 2;
+                    } elseif document.getElementById("accessLevel3").checked) {
+                        $value = 3;
+                    }</script>';*/
         });
-        */
+        
 
         /*
         Need to add if statemnt to check access level is authorised. If level 3 enable this control to remove delete data button
