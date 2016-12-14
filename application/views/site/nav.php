@@ -43,6 +43,13 @@
                       <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Add New Therapies</a></li>
                       </ul>
                   </li>
+                  <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapist<span class="caret"></span></a></li>
+                    <ul class="dropdown-menu">
+                      <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">All Therapists</a></li>
+                      <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Add New Therapist details</a></li>
+                      </ul>
+                  </li>
                 </ul>
               </div>
             </div>
