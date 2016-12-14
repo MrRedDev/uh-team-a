@@ -18,7 +18,8 @@ class Site extends CI_Controller {
     {
       $this->load->helper('form');
 
-      $data['main_content'] = 'site/admin';
+      $data['output'] = null;
+      $data['main_content'] = 'site/home';
       $data['user'] = $this->session->userdata('username');
       $data['al'] = $this->session->userdata('al');
       $this->load->view('includes/template', $data);
@@ -29,7 +30,8 @@ class Site extends CI_Controller {
     {
       $this->load->helper('form');
 
-      $data['main_content'] = 'site/members';
+      $data['output'] = null;
+      $data['main_content'] = 'site/home';
       $data['user'] = $this->session->userdata('username');
       $data['al'] = $this->session->userdata('al');
       $this->load->view('includes/template', $data);
@@ -54,6 +56,23 @@ class Site extends CI_Controller {
       redirect('login/index');
     }
 
+    public function home($page = 'home')
+    {
+
+        if ( ! file_exists(APPPATH.'views/site/'.$page.'.php'))
+        {
+          // Whoops, we don't have a page for that!
+          show_404();
+        }
+        $this->load->helper('form');
+
+        $data['output'] = null;
+        $data['main_content'] = 'site/home';
+        $data['user'] = $this->session->userdata('username');
+        $data['al'] = $this->session->userdata('al');
+        $this->load->view('includes/template', $data);
+        
+    }
 }
 
 ?>

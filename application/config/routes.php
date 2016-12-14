@@ -51,15 +51,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$route['login'] = 'login';
-$route['therapists/create'] = 'therapists/create';
+$route['login'] = 'login/index';
+$route['default_controller'] = 'login/index';
 
-$route['default_controller'] = 'pages/view';
+$route['(:any)'] = 'pages/view/$1';
+
+
+//Old routes not needed having merged work
+//$route['therapists/create'] = 'therapists/create';
 //$route['staff'] = 'staff/staff';
 //$route['addStaff'] = 'staff/staff/add';
-$route['(:any)'] = 'pages/view/$1';
 //$route['staff/add'] = 'staff/staff/add';
-$route['(:any)/insert'] = 'pages/$1/insert';
+/*$route['(:any)/insert'] = 'pages/$1/insert';
 $route['(:any)/insert_validation'] = 'pages/view/$1/insert_validation';
 $route['(:any)/success/:num'] = 'pages/view/$1/success';
 $route['(:any)/delete/:num'] = 'pages/view/$1/delete';
@@ -71,3 +74,4 @@ $route['(:any)/ajax_list'] = 'pages/view/$1/ajax_list';
 $route['(:any)/read/:num'] = 'pages/view/$1/read';
 $route['(:any)/export'] = 'welcome/$1/export';
 $route['translate_uri_dashes'] = FALSE;
+*/

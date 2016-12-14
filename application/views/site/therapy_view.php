@@ -1,15 +1,14 @@
-<head>		<?php foreach($css_files as $file): ?>
+<head>
+	<?php foreach($css_files as $file): ?>
 			<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-		<?php endforeach; ?>
+	<?php endforeach; ?>
 
-		<?php foreach($js_files as $file): ?>
+	<?php foreach($js_files as $file): ?>
 			<script src="<?php echo $file; ?>"></script>
-		<?php endforeach; ?> </head>
+	<?php endforeach; ?> 
+</head>
 
-	<h1>Staff</h1>
     <div class="jumbotron">
-
+		<h1>Therapy</h1>
 		<?php echo $output; ?>
 	</div>
-	
-
