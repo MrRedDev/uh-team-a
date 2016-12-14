@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo site_url('')?>">SRMS Prototype</a>
+      <a class="navbar-brand" href="<?php echo site_url('site/home')?>">SRMS Prototype</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <?php echo '
@@ -25,7 +25,8 @@
 </nav>
       <?php if ($al == 1) {
         echo '
-                <ul class="nav nav-stacked dropdown-menu-left">
+        <nav class"nav nav-stacked navbar-left">
+                <ul class="nav nav-stacked nav-pills navbar-left">
                   <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="http://localhost:8888/uh-team-a/index.php">Staff<span class="caret"></span></a>
                       <ul class="dropdown-menu">
