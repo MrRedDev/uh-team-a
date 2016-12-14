@@ -1,5 +1,5 @@
 </div>
-	<p class="bottom modal-footer">
+	<p class="navbar-fixed-bottom modal-footer">
       <em>&copy; 2016</em>
     </p>
   </body>
