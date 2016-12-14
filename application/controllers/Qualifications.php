@@ -9,13 +9,20 @@ class Qualifications extends CI_Controller {
 
         $this->load->database();
         $this->load->helper('url');
-
+        $this->load->helper('html');
+        $this->load->library('session');
         $this->load->library('grocery_CRUD');
     }
 
     public function qualifications_output($output = null)
     {
-        $this->load->view('pages/qualifications_view.php', $output);
+        $this->load->helper('form');
+
+        $data['output'] = $output;
+        $data['main_content'] = 'site/qualifications_view';
+        $data['user'] = $this->session->userdata('username');
+        $data['al'] = $this->session->userdata('al');
+        $this->load->view('includes/template', $data);
     }
 
 	// Staff table is called frome here
@@ -26,7 +33,6 @@ class Qualifications extends CI_Controller {
 
         $crud = new grocery_CRUD();
 
-        $this->load->view('templates/header');
         $crud->set_theme('flexigrid');
 
         //table name exact from database
@@ -50,7 +56,6 @@ class Qualifications extends CI_Controller {
         $output = $crud->render();
 		$this->qualifications_output($output);
 
-        $this->load->view('templates/footer');
     }
 
 }

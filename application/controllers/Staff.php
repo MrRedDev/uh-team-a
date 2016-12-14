@@ -8,25 +8,32 @@ class Staff extends CI_Controller {
         parent:: __construct();
 
         $this->load->database();
-        $this->load->helper('url');
+        $this->load->helper('url');  
+        $this->load->helper('html');
+        $this->load->library('session');
 
         $this->load->library('grocery_CRUD');
     }
 
     public function staff_output($output = null)
     {
-        $this->load->view('pages/staff_view.php', $output);
+        $this->load->helper('form');
+
+        $data['output'] = $output;
+        $data['main_content'] = 'site/staff_view';
+        $data['user'] = $this->session->userdata('username');
+        $data['al'] = $this->session->userdata('al');
+        $this->load->view('includes/template', $data);
     }
 
 	// Staff table is called frome here
     public function staff()
     {
         // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
-        $this->load->view('templates/header');
+        //$this->load->view('templates/header');
 
         $crud->set_theme('flexigrid');
 
@@ -51,9 +58,11 @@ class Staff extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
         
-        $crud->callback_add_field('staffPassword',function () {
-            return '<input type="Password" maxlength="4" value="" style="-webkit-text-security: square;">';
-        });
+       //Commented out add field staff password as stopping password from adding to DB
+       /*$crud->callback_add_field('staffPassword',function () {
+            return '<input type="text" maxlength="4" <!--style="-webkit-text-security: square;-->">';
+        }); */
+        
         //Following function provides a user friendly checkbox with understandable terms. EG level 3 is referred to as a therapist by the SPA. Form should return the the appropriate value when checked after editing or adding
 
                 // Provide a checkbox for access level when adding user
@@ -98,11 +107,10 @@ class Staff extends CI_Controller {
         */
 
 
-        $crud->callback_insert('enabled', 'Y');
+        //$crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
-		$this->staff_output($output);
 
-        $this->load->view('templates/footer');
+        $this->staff_output($output);
     }
 
 }

@@ -15,7 +15,13 @@ class Therapy extends CI_Controller {
 
     public function therapy_output($output = null)
     {
-        $this->load->view('pages/therapy_view.php', $output);
+        $this->load->helper('form');
+
+        $data['output'] = $output;
+        $data['main_content'] = 'site/therapy_view';
+        $data['user'] = $this->session->userdata('username');
+        $data['al'] = $this->session->userdata('al');
+        $this->load->view('includes/template', $data);
     }
 
 	// Staff table is called frome here
@@ -26,7 +32,6 @@ class Therapy extends CI_Controller {
 
         $crud = new grocery_CRUD();
 
-        $this->load->view('templates/header');
         $crud->set_theme('flexigrid');
 
         //table name exact from database
@@ -51,9 +56,9 @@ class Therapy extends CI_Controller {
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
         
         $output = $crud->render();
+        
 		$this->therapy_output($output);
 
-        $this->load->view('templates/footer');
     }
 
 }
