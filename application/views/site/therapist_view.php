@@ -9,7 +9,6 @@
 </head>
 
   	<div class="jumbotron">
-  		<h1>Add Therapist</h1>
+  		<h1>Therapist</h1>
 		<?php echo $output; ?>
 	</div>
-	
