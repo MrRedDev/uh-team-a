@@ -12,6 +12,11 @@ class Equipment extends CI_Controller {
         $this->load->helper('html');
         $this->load->library('session');
         $this->load->library('grocery_CRUD');
+        // $this->check_dates();
+    }
+
+    public function check_dates() {
+      // will try notifications
     }
 
     public function equipment_output($output = null)
