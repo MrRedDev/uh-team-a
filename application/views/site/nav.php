@@ -39,6 +39,9 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Add New Therapist</a></li>
             </ul>
           </li>
+          
+                    <!-- Therapist Qualifications Item -->
+          <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist Qualifications</a></li>
         </ul>
       ';
     } else if ($al == 2): {
