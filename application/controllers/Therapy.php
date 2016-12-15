@@ -59,21 +59,21 @@ class Therapy extends CI_Controller {
         
         // When adding Present radial button to archive yes or no
         $crud->callback_add_field('isOffered',function () {
-                return  '<form> Should this Therapy be Archived? <br>
-                            <input type="radio" value="N" name="archiveOption" id="archiveOptionY"
-                                 if (isset($_POST["archiveOption"]) && $_POST["archiveOption"] == "Y"): endif; /> Yes 
-                            <input type="radio" value="Y" name="archiveOption" id="archiveOptionN" checked="checked"
-                                 if (isset($_POST["archiveOption"]) && $_POST["archiveOption"] == "N"): endif; /> No 
+                return  '<form>
+                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
                         </form>';
                     });
 
         // When adding Present radial button to archive yes or no
         $crud->callback_edit_field('isOffered',function () {
-                return  '<form> Should this Therapy be Archived? <br>
-                            <input type="radio" value="N" name="archiveOption" id="archiveOptionY" 
-                                 if (isset($_POST["archiveOption"]) && $_POST["archiveOption"] == "N"): endif; /> Yes 
-                            <input type="radio" value="Y" name="archiveOption" id="archiveOptionN" checked="checked"
-                                 if (isset($_POST["archiveOption"]) && $_POST["archiveOption"] == "Y"): endif; /> No  
+                return  '<form>
+                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
                         </form>';
                     });
 

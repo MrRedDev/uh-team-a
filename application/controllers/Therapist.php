@@ -42,7 +42,11 @@ class Therapist extends CI_Controller {
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
-        
+
+        // choose room number from list of rooms available
+        $crud->set_relation('roomNo', 'room', 'roomNo');
+
+        // choose the manager of the therapist
         $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
 
         	        //give focus on name used for operations e.g. Add Order, Delete Order
