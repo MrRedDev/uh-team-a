@@ -11,6 +11,7 @@ class Therapist extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
         $this->load->library('session');
+
         $this->load->library('grocery_CRUD');
     }
 
@@ -55,8 +56,8 @@ class Therapist extends CI_Controller {
         $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
         
         $output = $crud->render();
-		$this->qualifications_output($output);
 
+		$this->therapist_output($output);
     }
 
 }

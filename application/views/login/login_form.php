@@ -1,5 +1,5 @@
-<div class="container">
-
+<div class="container jumbotron">
+<div class="well">
   <div id="login_form" class="form-signin">
     <h1 class="form-signin-heading">Login</h1>
     <?php
@@ -21,6 +21,7 @@
       echo anchor('login/signup', 'Create Account');
 
      ?>
+  </div>
   </div>
 
 </div>
