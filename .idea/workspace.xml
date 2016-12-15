@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eefe8a9-41dd-47f5-ad2b-263808a8d801" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/database.php" afterPath="$PROJECT_DIR$/application/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/site/nav.php" afterPath="$PROJECT_DIR$/application/views/site/nav.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Therapist_qualif.php" afterPath="$PROJECT_DIR$/application/controllers/Therapist_qualif.php" />
     </list>
     <ignored path="uh-team-a.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nav.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/site/nav.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="500">
@@ -62,7 +61,27 @@
       <file leaf-file-name="Therapist_qualif.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Therapist_qualif.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-240">
+            <state relative-caret-position="600">
+              <caret line="42" column="121" selection-start-line="42" selection-start-column="121" selection-end-line="42" selection-end-column="121" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Therapy.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/Therapy.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-300">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Therapist.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/Therapist.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-120">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -79,6 +98,7 @@
       <list>
         <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/application/views/site/nav.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Therapist_qualif.php" />
       </list>
     </option>
   </component>
@@ -270,12 +290,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1481837171758</updated>
-      <workItem from="1481837173754" duration="358000" />
+      <workItem from="1481837173754" duration="1152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358000" />
+    <option name="totallyTimeSpent" value="1152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -324,14 +344,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Therapist_qualif.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/site/nav.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -352,6 +364,30 @@
             <marker date="1481837531690" expanded="true" signature="2854:2956" ph="..." />
             <marker date="1481837531690" expanded="true" signature="3093:3162" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Therapist_qualif.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="121" selection-start-line="42" selection-start-column="121" selection-end-line="42" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Therapy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Therapist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -41,11 +41,6 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_subject('TherapistQualifications');
 
         $crud->set_relation_n_n('qualification', 'therapistqualifications', 'qualifications', 'staffNo', 'qId', 'qName');
-        //$crud->set_relation_n_n('therapists', 'therapistqualifications', 'staff', 'qId', 'staffNo', 'lName');
-
-        //$crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
-
-        // $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
 
 
         $crud->unset_columns('enabled', 'staffLogin', 'staffPassword', 'accessLevel');
