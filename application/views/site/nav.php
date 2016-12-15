@@ -25,10 +25,12 @@
           </li>
                     <!-- Therapy Menu Items -->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapy<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapies<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">View or Edit Therapies</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Add New Therapy</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">View or Edit Equipment</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Add New Equipment</a></li>
             </ul>
           </li>
                     <!-- Therapist Menu Items -->
