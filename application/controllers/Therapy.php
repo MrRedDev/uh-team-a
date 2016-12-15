@@ -9,7 +9,9 @@ class Therapy extends CI_Controller {
 
         $this->load->database();
         $this->load->helper('url');
-
+        $this->load->helper('html');
+        $this->load->library('session');
+        
         $this->load->library('grocery_CRUD');
     }
 

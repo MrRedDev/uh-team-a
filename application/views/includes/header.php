@@ -15,7 +15,6 @@
     <?php echo link_tag('assets/css/login/signin.css'); ?>
     <?php echo link_tag('assets/css/login/create.css'); ?>
     <?php echo link_tag('assets/css/site/nav.css'); ?>
-    <?php echo link_tag('assets/css/main.css'); ?>
 
   </head>
   <body>

@@ -106,7 +106,6 @@ class Staff extends CI_Controller {
         $crud->unset_add();
         */
 
-
         //$crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
 
