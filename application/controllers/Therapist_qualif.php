@@ -42,10 +42,9 @@ class Therapist_qualif extends CI_Controller {
 
         $crud->set_relation_n_n('qualification', 'therapistqualifications', 'qualifications', 'staffNo', 'qId', 'qName');
 
-
         $crud->unset_columns('enabled', 'staffLogin', 'staffPassword', 'accessLevel');
 
-        $crud->columns('staffNo','fName', 'lName', 'qualification', 'therapists', 'qName', 'dateQualified', 'qExpiryDdate');
+        $crud->columns('staffNo','fName', 'lName', 'qualification', 'dateQualified', 'qExpiryDdate');
 
         $output = $crud->render();
 		$this->staff_qualif_output($output);
