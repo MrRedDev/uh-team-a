@@ -38,14 +38,27 @@ class Therapist extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapist');
+        
+
+        // replace staff number with name of therapist
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+
+        // choose room number from list of rooms available
+        $crud->set_relation('roomNo', 'room', 'roomNo');
+
+        // choose the manager of the therapist
+        $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
+
         	        //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapist'); 
         $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
-        $crud->display_as('staffNo', 'Staff ID Number')
+
+        $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
-            ->display_as('maanagerNo', 'Manager ID Number');
+            ->display_as('managerNo', 'Manager ID Number');
+
 
         $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
         $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new Therapist details
@@ -54,7 +67,7 @@ class Therapist extends CI_Controller {
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
-        
+
         $output = $crud->render();
 
 		$this->therapist_output($output);
