@@ -16,7 +16,7 @@
               echo 'Marketing </a></li>';
             } elseif ($al == 3): {
               echo 'Therapist </a></li>';
-            } 
+            }
           endif;?>
       <li><a href='<?php echo site_url('site/logout')?>'><span class="glyphicon glyphicon-log-out"></span> Log out</a>
       </li>
@@ -36,6 +36,9 @@
                   </li>
                   <li role="presentation">
                     <a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications">Qualifications</a></li>
+                  <li role="presentation">
+                    <a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">Equipment</a>
+                  </li>
                   <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapy<span class="caret"></span></a></li>
                     <ul class="dropdown-menu">
@@ -53,7 +56,7 @@
                 </ul>
               </div>
             </div>
-          </nav>'; 
+          </nav>';
         } ?>
         <?php if ($al > 1) {
           echo '
@@ -78,10 +81,10 @@
               </div>
             </div>
             </div>
-            </nav>'; 
+            </nav>';
           } ?>
         </ul>
-        
+
       </div>
     </div>
   </div>
