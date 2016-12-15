@@ -41,6 +41,9 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Add New Therapy Rooms</a></li>
             </ul>
           </li>
+          
+                    <!-- Therapist Qualifications Item -->
+          <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist Qualifications</a></li>
         </ul>
       ';
     } else if ($al == 2): {
