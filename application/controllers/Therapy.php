@@ -9,7 +9,9 @@ class Therapy extends CI_Controller {
 
         $this->load->database();
         $this->load->helper('url');
-
+        $this->load->helper('html');
+        $this->load->library('session');
+        
         $this->load->library('grocery_CRUD');
     }
 
@@ -55,6 +57,27 @@ class Therapy extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
         
+        // When adding Present radial button to archive yes or no
+        $crud->callback_add_field('isOffered',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('isOffered',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked="checked"
+                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+
         $output = $crud->render();
         
 		$this->therapy_output($output);

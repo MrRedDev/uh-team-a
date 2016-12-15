@@ -76,23 +76,18 @@ class Staff extends CI_Controller {
                              if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "3"): endif; /> Therapist 
                         </form>';
 
-                        //PHP attempt at assigning value to return and post the value to database when a radio option is selected
-                       /* if(isset($_POST["accessLevel"])){
-                            if(!empty($_POST["1"])){
-                                if(!empty($_POST["2"])){
-                                    if(!empty($_POST["3"]));
+        });
 
-                        }}};*/
-                        
-                    /*  <script>if(document.getElementById("accessLevel1").checked) {
-                        //Add code here that will show add new manager_hr details
-                        $value = 1;
-                    } elseif (document.getElementById("accessLevel2").checked) {
-                        //Add code here that will add new marketingStaff details
-                        $value = 2;
-                    } elseif document.getElementById("accessLevel3").checked) {
-                        $value = 3;
-                    }</script>';*/
+       $crud->callback_edit_field('accessLevel',function () {
+                return  '<form>
+                        <input type="radio" value="1" name="accessLevel" id="accessLevel1" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "1"): endif; /> Manager 
+                        <input type="radio" value="2" name="accessLevel" id="accessLevel2" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "2"): endif; /> Marketing 
+                        <input type="radio" value="3" name="accessLevel" id="accessLevel3" checked="checked"
+                             if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "3"): endif; /> Therapist 
+                        </form>';
+
         });
         
 
@@ -105,7 +100,6 @@ class Staff extends CI_Controller {
         Need to add if statemnt to check access level is authorised. If level 2/3 enable this control to remove create new staff/therapist data button
         $crud->unset_add();
         */
-
 
         //$crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
