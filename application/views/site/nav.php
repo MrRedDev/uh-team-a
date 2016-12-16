@@ -46,6 +46,9 @@
           
                     <!-- Therapist Qualifications Item -->
           <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist Qualifications</a></li>
+          
+                    <!-- Therapy Equipment Item -->
+          <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_equipment/therapy_equipment">Therapy Equipment</a></li>
         </ul>
       ';
     } else if ($al == 2): {
