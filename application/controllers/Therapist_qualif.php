@@ -36,6 +36,7 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_theme('flexigrid');
 
         //table name exact from database
+
         $crud->set_table('therapistQualifications');
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapist Qualifications');
@@ -74,9 +75,8 @@ class Therapist_qualif extends CI_Controller {
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
-
         $output = $crud->render();
-		$this->staff_qualif_output($output);
+		    $this->staff_qualif_output($output);
 
     }
 
