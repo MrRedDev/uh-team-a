@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Therapist extends CI_Controller {
+class Equipment extends CI_Controller {
 
 	public function __construct()
     {
@@ -11,23 +11,27 @@ class Therapist extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('html');
         $this->load->library('session');
-
         $this->load->library('grocery_CRUD');
+        // $this->check_dates();
     }
 
-    public function therapist_output($output = null)
+    public function check_dates() {
+      // will try notifications
+    }
+
+    public function equipment_output($output = null)
     {
         $this->load->helper('form');
 
         $data['output'] = $output;
-        $data['main_content'] = 'site/therapist_view';
+        $data['main_content'] = 'site/equipment_view';
         $data['user'] = $this->session->userdata('username');
         $data['al'] = $this->session->userdata('al');
         $this->load->view('includes/template', $data);
     }
 
 	// Staff table is called frome here
-    public function therapist()
+    public function equipment()
     {
         // Loading view home page views, Grocery CRUD Standard Library
        // $this->load->view('templates/header');
@@ -37,40 +41,26 @@ class Therapist extends CI_Controller {
         $crud->set_theme('flexigrid');
 
         //table name exact from database
-        $crud->set_table('therapist');
-        
-
-        // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
-
-        // choose room number from list of rooms available
-        $crud->set_relation('roomNo', 'room', 'roomNo');
-
-        // choose the manager of the therapist
-        $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
-
+        $crud->set_table('equipment');
         	        //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapist'); 
-        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+        $crud->set_subject('Equipment');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
-
-        $crud->display_as('staffNo', 'Therapist Name')
-            ->display_as('phoneNo', 'Phone Number')
-            ->display_as('roomNo', 'Room Number')
-            ->display_as('managerNo', 'Manager ID Number');
-
+        $crud->display_as('eIdNumber', 'Equipment ID Number');
+        $crud->display_as('eName', 'Equipment Name');
+        $crud->display_as('eReviewDate', 'Review Date');
 
         $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new Therapist details
+        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new qualification
 
-        $crud->fields('staffNo', 'phoneNo', 'roomNo', 'managerNo');
+        $crud->fields('eIdNumber', 'eName', 'eReviewDate');
 
         //form validation (could match database columns set to "not null")
-        $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+        $crud->required_fields('eIdNumber', 'eName', 'eReviewDate');
 
         $output = $crud->render();
+		    $this->equipment_output($output);
 
-		$this->therapist_output($output);
     }
 
 }

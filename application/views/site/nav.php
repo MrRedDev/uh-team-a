@@ -17,7 +17,7 @@
           </li>
                     <!-- Qualifications Menu Items -->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Qualifications<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Qualifications<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications">View or Edit Qualifications</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications/add">Add New Qualifications</a></li>
@@ -25,18 +25,22 @@
           </li>
                     <!-- Therapy Menu Items -->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapy<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapies<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">View or Edit Therapies</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Add New Therapy</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">View or Edit Equipment</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Add New Equipment</a></li>
             </ul>
           </li>
                     <!-- Therapist Menu Items -->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapists<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapists<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">View or Edit Therapists</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Add New Therapist</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/">View or Edit Therapy Rooms</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Add New Therapy Rooms</a></li>
             </ul>
           </li>
           
