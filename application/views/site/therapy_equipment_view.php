@@ -8,8 +8,11 @@
 	<?php endforeach; ?> 
 </head>
 
-  	<div class="jumbotron">
-  		<h1>Therapy Equipment</h1>
+<div class="container-fluid jumbotron">
+		<h1>Therapy Equipment</h1>  		
+		<div class="well">
+
 		<?php echo $output; ?>
+	</div>
 	</div>
 	

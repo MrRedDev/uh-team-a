@@ -34,7 +34,7 @@ class Therapy_session extends CI_Controller {
 
         $crud = new grocery_CRUD();
 
-        $crud->where('enabled', 'N');
+        //$crud->where('enabled', 'N');
 
         $crud->set_theme('flexigrid');
 
