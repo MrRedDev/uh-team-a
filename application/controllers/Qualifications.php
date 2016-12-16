@@ -46,13 +46,32 @@ class Qualifications extends CI_Controller {
         $crud->display_as('qName', 'Qualification');
         $crud->display_as('qAccBody', 'Accrediting Body');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new qualification
+        // When adding Present radial button to archive yes or no
+        $crud->callback_add_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
 
-        $crud->fields('qId', 'qName', 'qLevel', 'qAccBody');
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+        $crud->where('enabled', 'Y');
+
+        $crud->fields('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
 
         //form validation (could match database columns set to "not null")
-        $crud->required_fields('qId', 'qName', 'qLevel', 'qAccBody');
+        $crud->required_fields('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
         
         $output = $crud->render();
 

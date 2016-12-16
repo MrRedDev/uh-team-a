@@ -50,17 +50,33 @@ class Room extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('roomNo', 'enabled');
 
+        // When adding Present radial button to archive yes or no
         $crud->callback_add_field('enabled',function () {
                 return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
                              if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="enabledN" checked="checked"
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
                              if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
                         </form>';
+                    });
 
-        });
-        
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+        $crud->where('enabled', 'Y');
+
+        //$crud->callback_delete('enabled', 'N');
+
         $output = $crud->render();
+
+
 
 		$this->room_output($output);
 
