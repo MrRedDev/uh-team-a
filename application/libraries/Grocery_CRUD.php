@@ -38,6 +38,7 @@ class grocery_CRUD_Field_Types
 	 * Gets the field types of the main table.
 	 * @return array
 	 */
+
 	public function get_field_types()
 	{
 		if ($this->field_types !== null) {
@@ -255,7 +256,8 @@ class grocery_CRUD_Field_Types
 
 	protected function change_list_value($field_info, $value = null)
 	{
-		$real_type = $field_info->crud_type;
+        date_default_timezone_set('UTC');
+        $real_type = $field_info->crud_type;
 
 		switch ($real_type) {
 			case 'hidden':
@@ -1801,7 +1803,8 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 	protected function change_list($list,$types)
 	{
-		$primary_key = $this->get_primary_key();
+		date_default_timezone_set('UTC');
+        $primary_key = $this->get_primary_key();
 		$has_callbacks = !empty($this->callback_column) ? true : false;
 		$output_columns = $this->get_columns();
 		foreach($list as $num_row => $row)

@@ -36,15 +36,20 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_theme('flexigrid');
 
         //table name exact from database
-        $crud->set_table('staff');
+        $crud->set_table('therapistqualifications');
+
+        // Replace staffNo and qId keys with staff name and qualification name
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('TherapistQualifications');
+        $crud->set_subject('Therapist Qualifications');
+        // provide user friendly column name
+        $crud->display_as('staffNo', 'Therapist_name');
+        $crud->display_as('qId', 'Qualification');
 
-        $crud->set_relation_n_n('qualification', 'therapistqualifications', 'qualifications', 'staffNo', 'qId', 'qName');
+        // define columns in the view
 
-        $crud->unset_columns('enabled', 'staffLogin', 'staffPassword', 'accessLevel');
-
-        $crud->columns('staffNo','fName', 'lName', 'qualification', 'dateQualified', 'qExpiryDdate');
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
         $output = $crud->render();
 		$this->staff_qualif_output($output);
