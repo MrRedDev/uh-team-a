@@ -69,7 +69,7 @@
     <ul class="nav navbar-nav navbar-right">
       <?php echo '
         <li class="dropdown">
-          <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/login/index"><span class="glyphicon glyphicon-user"></span> ';
+          <a href=""><span class="glyphicon glyphicon-user"></span> ';
             echo $user;
               if ($al == 1): {
                 echo ' - Access level: Manager </a></li>';
@@ -78,7 +78,7 @@
               } elseif ($al == 3): {
                 echo ' - Access level: Therapist </a></li>';
               } else: {
-                echo ' Please Log In</a></li>';
+                echo 'Please Log In';
               } endif;
             ?>
       <li><a href='<?php echo site_url('site/logout')?>'><span class="glyphicon glyphicon-log-out"></span> Log out</a>
