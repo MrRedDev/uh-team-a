@@ -60,6 +60,8 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session/add">Therapy Sessions</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Equipment</a></li>
               <li role="separator" class="divider"></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_equipment/therapy_equipment">Link Therapy &amp; Equipment</a></li>
+              <li role="separator" class="divider"></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/archived_therapy">Archived Therapies</a></li>
             </ul>
           </li>

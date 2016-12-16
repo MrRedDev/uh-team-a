@@ -36,7 +36,7 @@ class Therapy_equipment extends CI_Controller {
         $crud->set_theme('flexigrid');
 
         //table name exact from database to read data from
-        $crud->set_table('therapyequipment');
+        $crud->set_table('therapyEquipment');
 
         // replace Primary key and Foreign key values with therapy name and equipment name
 
@@ -52,6 +52,7 @@ class Therapy_equipment extends CI_Controller {
         $crud->columns('eIdNumber', 'therapyId');
 
         $output = $crud->render();
+
 		$this->therapy_equipment_output($output);
 
     }
