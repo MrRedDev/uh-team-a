@@ -49,8 +49,27 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qExpiryDdate', 'Qualification Expiry Date');
 
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
+        // When adding Present radial button to archive yes or no
+        $crud->callback_add_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
+
+        $crud->where('enabled', 'Y');
 
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');

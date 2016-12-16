@@ -52,10 +52,12 @@
             <ul class="dropdown-menu">
               <li class="dropdown-header">View &amp; Edit</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">Therapy List</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session">Therapy Sessions</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">Equipment List</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Therapy</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session/add">Therapy Sessions</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Equipment</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/archived_therapy">Archived Therapies</a></li>
