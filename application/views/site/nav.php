@@ -68,17 +68,16 @@
     ?>
     <ul class="nav navbar-nav navbar-right">
       <?php echo '
-        <li class="dropdown">
-          <a href=""><span class="glyphicon glyphicon-user"></span> ';
+        <li class="dropdown">';
             echo $user;
               if ($al == 1): {
-                echo ' - Access level: Manager </a></li>';
+                echo '<a href=""><span class="glyphicon glyphicon-user"></span>- Access level: Manager </a></li>';
               } elseif ($al == 2): {
-                echo ' - Access level: Marketing </a></li>';
+                echo '<a href=""><span class="glyphicon glyphicon-user"></span> - Access level: Marketing </a></li>';
               } elseif ($al == 3): {
-                echo ' - Access level: Therapist </a></li>';
+                echo '<a href=""><span class="glyphicon glyphicon-user"></span> - Access level: Therapist </a></li>';
               } else: {
-                echo 'Please Log In';
+                echo '<a href="http://localhost:8888/uh-team-a/index.php/login/index"><span class="glyphicon glyphicon-user"></span> Please Log In</a></li>';
               } endif;
             ?>
       <li><a href='<?php echo site_url('site/logout')?>'><span class="glyphicon glyphicon-log-out"></span> Log out</a>

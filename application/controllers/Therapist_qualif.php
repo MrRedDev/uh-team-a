@@ -36,21 +36,25 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_theme('flexigrid');
 
         //table name exact from database
-        $crud->set_table('staff');
+        $crud->set_table('therapistQualifications');
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('TherapistQualifications');
+        $crud->set_subject('Therapist Qualifications');
 
-        $crud->set_relation_n_n('qualification', 'therapistqualifications', 'qualifications', 'staffNo', 'qId', 'qName');
-        //$crud->set_relation_n_n('therapists', 'therapistqualifications', 'staff', 'qId', 'staffNo', 'lName');
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('qId', 'Qualification and Level')
+            ->display_as('dateQualified', 'Date Qualified')
+            ->display_as('qExpiryDdate', 'Qualification Expiry Date');
 
-        //$crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
 
-        // $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
+        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
+        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
 
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
-        $crud->unset_columns('enabled', 'staffLogin', 'staffPassword', 'accessLevel');
-
-        $crud->columns('staffNo','fName', 'lName', 'qualification', 'therapists', 'qName', 'dateQualified', 'qExpiryDdate');
 
         $output = $crud->render();
 		$this->staff_qualif_output($output);

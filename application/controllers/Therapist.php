@@ -38,7 +38,7 @@ class Therapist extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapist');
-        
+        $crud->set_subject('Therapist'); 
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
@@ -47,10 +47,9 @@ class Therapist extends CI_Controller {
         $crud->set_relation('roomNo', 'room', 'roomNo');
 
         // choose the manager of the therapist
-        $crud->set_relation_n_n('Therapist Manager', 'manager_HR', 'staff', 'managerNo', 'staffNo', 'lName');
+        //$crud->set_relation_n_n('managerNo', 'staff', 'staffNo', '');
 
         	        //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapist'); 
         $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
@@ -59,11 +58,27 @@ class Therapist extends CI_Controller {
             ->display_as('roomNo', 'Room Number')
             ->display_as('managerNo', 'Manager ID Number');
 
+                // When adding Present radial button to archive yes or no
+        $crud->callback_add_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="enabledN"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new Therapist details
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="enabledN"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
 
-        $crud->fields('staffNo', 'phoneNo', 'roomNo', 'managerNo');
+        $crud->fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');

@@ -33,6 +33,7 @@ class Room extends CI_Controller {
        // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
+                $crud->where('enabled', 'Y');
 
         $crud->set_theme('flexigrid');
 
@@ -50,20 +51,27 @@ class Room extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('roomNo', 'enabled');
 
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="enabledN" checked="checked"
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
+        $crud->callback_add_field('enabled', array($this, 'enabled_Y_N'));
+        $crud->callback_edit_field('enabled', array($this, 'enabled_Y_N'));
 
-        });
-        
+        $crud->callback_delete('enabled', 'N');
+
         $output = $crud->render();
 
 		$this->room_output($output);
 
+    }
+
+    function enabled_Y_N($value){
+
+                return'<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" 
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="enabledN" 
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): {
+                                $value = "N";
+                             } endif; /> No
+                        </form>';
     }
 
 }

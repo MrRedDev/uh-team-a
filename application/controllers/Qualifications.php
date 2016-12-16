@@ -46,8 +46,22 @@ class Qualifications extends CI_Controller {
         $crud->display_as('qName', 'Qualification');
         $crud->display_as('qAccBody', 'Accrediting Body');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new qualification
+        $crud->callback_add_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="enabledN" 
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+        });
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="enabledN"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
 
         $crud->fields('qId', 'qName', 'qLevel', 'qAccBody');
 

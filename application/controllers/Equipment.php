@@ -50,8 +50,22 @@ class Equipment extends CI_Controller {
         $crud->display_as('eName', 'Equipment Name');
         $crud->display_as('eReviewDate', 'Review Date');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new qualification
+        $crud->callback_add_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="enabledN" 
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+        });
+        $crud->callback_edit_field('enabled',function () {
+                return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="enabledY" checked="checked"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="isOffered" id="enabledN"
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+                    });
 
         $crud->fields('eIdNumber', 'eName', 'eReviewDate');
 
