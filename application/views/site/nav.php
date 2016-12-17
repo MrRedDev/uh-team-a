@@ -79,7 +79,7 @@
       echo '
         <ul class="nav navbar-nav">
           <li>
-            <a href="http://localhost:8888/uh-team-a/">Therapist views not set up</a>
+            <a href="http://localhost:8888/uh-team-a/index.php/staff/staff_member">My Info</a>
           </li>
         </ul>
       ';
@@ -117,5 +117,5 @@
     </ul>
   </div>
 </nav>
-      
+
 <div class="container-fluid">
