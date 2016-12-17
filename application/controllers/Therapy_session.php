@@ -87,6 +87,9 @@ class Therapy_session extends CI_Controller {
 
         $crud->required_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
 
+        // Prevent duplicating data
+        $crud->unique_fields(array('sessionId'));
+
         $output = $crud->render();
 
 		$this->therapy_session_output($output);

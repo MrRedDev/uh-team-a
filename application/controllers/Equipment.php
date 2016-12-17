@@ -77,6 +77,9 @@ class Equipment extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
 
+        // Prevent duplicating data
+        $crud->unique_fields(array('eIdNumber','eName'));
+
         $output = $crud->render();
 		    
         $this->equipment_output($output);

@@ -72,6 +72,9 @@ class Qualifications extends CI_Controller {
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('qId','qName'));
         
         $output = $crud->render();
 
