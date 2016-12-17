@@ -18,8 +18,12 @@
       ));
 
       echo form_submit('submit', 'Login');
-      echo anchor('login/signup', 'Create Account');
-
+      /*
+      * Need to create a sign up form
+      *
+      * echo anchor('login/signup', 'Create Account');
+      *
+      */
      ?>
   </div>
   </div>

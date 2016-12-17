@@ -12,7 +12,6 @@ class Equipment extends CI_Controller {
         $this->load->helper('html');
         $this->load->library('session');
         $this->load->library('grocery_CRUD');
-        // $this->check_dates();
     }
 
     public function check_dates() {
@@ -33,8 +32,6 @@ class Equipment extends CI_Controller {
 	// Staff table is called frome here
     public function equipment()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
@@ -42,34 +39,19 @@ class Equipment extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('equipment');
-        	        //give focus on name used for operations e.g. Add Order, Delete Order
+
+        //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Equipment');
-        $crud->columns('eIdNumber', 'eName', 'eReviewDate', 'enabled');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
+
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('eIdNumber', 'Equipment ID Number');
         $crud->display_as('eName', 'Equipment Name');
         $crud->display_as('eReviewDate', 'Review Date');
 
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
+        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
+        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
+        
         $crud->where('enabled', 'Y');
 
         $crud->fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');

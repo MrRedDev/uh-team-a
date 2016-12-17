@@ -25,11 +25,8 @@ class Therapy_equipment extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-	// Staff table is called frome here
     public function therapy_equipment()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 

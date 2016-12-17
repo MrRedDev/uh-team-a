@@ -28,8 +28,6 @@ class Therapy extends CI_Controller {
 
     public function therapy()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
@@ -37,11 +35,12 @@ class Therapy extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapy');
-        	        //give focus on name used for operations e.g. Add Order, Delete Order
+
+        //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy'); 
         $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
         	   
-    //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
             ->display_as('therapyName', 'Therapy')
             ->display_as('tCategory', 'Therapy Category')
@@ -157,8 +156,6 @@ class Therapy extends CI_Controller {
 
     public function archived_therapy()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
@@ -170,7 +167,7 @@ class Therapy extends CI_Controller {
         $crud->set_subject('Therapy'); 
         $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
                
-    //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
             ->display_as('therapyName', 'Therapy')
             ->display_as('tCategory', 'Therapy Category')
