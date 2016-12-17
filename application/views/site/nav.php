@@ -9,46 +9,62 @@
         <ul class="nav navbar-nav">
                   <!-- staff Menu Items -->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Staff<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Staff<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="http://localhost:8888/uh-team-a/index.php/staff/staff">View or Edit Staff</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/staff/staff/add">Add New Staff</a></li>
-            </ul>
-          </li>
-                    <!-- Qualifications Menu Items -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Qualifications<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications">View or Edit Qualifications</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications/add">Add New Qualifications</a></li>
-            </ul>
-          </li>
-                    <!-- Therapy Menu Items -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapies<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">View or Edit Therapies</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Add New Therapy</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">View or Edit Equipment</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Add New Equipment</a></li>
+              <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/staff/staff">Staff</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/staff/staff/add">Staff</a></li>
             </ul>
           </li>
                     <!-- Therapist Menu Items -->
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapists<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">View or Edit Therapists</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Add New Therapist</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/">View or Edit Therapy Rooms</a></li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Add New Therapy Rooms</a></li>
+              <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">Therapists</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/">Therapy Rooms</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Therapist</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Therapy Room</a></li>
             </ul>
           </li>
-          
-                    <!-- Therapist Qualifications Item -->
-          <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist Qualifications</a></li>
-          
-                    <!-- Therapy Equipment Item -->
-          <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_equipment/therapy_equipment">Therapy Equipment</a></li>
+                    <!-- Qualifications Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Qualifications<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications">Qualifications</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications/add">Qualifications</a></li>
+                                  <!-- Therapist Qualifications Item -->
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Assign</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist &amp; Qualification</a></li>
+            </ul>
+          </li>
+                    <!-- Therapy Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapies<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">Therapy List</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session">Therapy Sessions</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">Equipment List</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Therapy</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session/add">Therapy Sessions</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Equipment</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_equipment/therapy_equipment">Link Therapy &amp; Equipment</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/archived_therapy">Archived Therapies</a></li>
+            </ul>
+          </li>
         </ul>
       ';
     } else if ($al == 2): {
@@ -63,25 +79,40 @@
       echo '
         <ul class="nav navbar-nav">
           <li>
-            <a href="http://localhost:8888/uh-team-a/">Therapist views not set up</a>
+            <a href="http://localhost:8888/uh-team-a/index.php/staff/staff_member">My Info</a>
+          </li>
+          <li>
+            <a href="http://localhost:8888/uh-team-a/index.php/qualifications/member_qualifications">My qualifications</a>
           </li>
         </ul>
       ';
     } endif;
     ?>
     <ul class="nav navbar-nav navbar-right">
-      <?php echo '
-        <li class="dropdown">
-          <a href=""><span class="glyphicon glyphicon-user"></span> ';
-            echo $user;
-              if ($al == 1): {
+      <?php if ($al == 1): {
+                echo '
+                  <li class="dropdown">
+                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                echo $user;
                 echo ' - Access level: Manager </a></li>';
               } elseif ($al == 2): {
+                echo '
+                  <li class="dropdown">
+                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                echo $user;
                 echo ' - Access level: Marketing </a></li>';
               } elseif ($al == 3): {
+                echo '
+                  <li class="dropdown">
+                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                echo $user;
                 echo ' - Access level: Therapist </a></li>';
               } else: {
-                echo 'Please Log In';
+                echo '
+                  <li class="dropdown">
+                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/login/index"><span class="glyphicon glyphicon-user"></span> ';
+                echo $user;
+                echo ' Please Log In</a></li>';
               } endif;
             ?>
       <li><a href='<?php echo site_url('site/logout')?>'><span class="glyphicon glyphicon-log-out"></span> Log out</a>
@@ -89,5 +120,5 @@
     </ul>
   </div>
 </nav>
-      
+
 <div class="container-fluid">

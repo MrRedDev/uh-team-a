@@ -5,13 +5,13 @@
 
 	<?php foreach($js_files as $file): ?>
 			<script src="<?php echo $file; ?>"></script>
-	<?php endforeach; ?> 
+	<?php endforeach; ?>
 </head>
 
   	<div class="container-fluid jumbotron">
-  		<h1>Therapist Qualifications</h1>
+  	<h1>Qualifications</h1>
   		<div class="well">
-		<?php echo $output; ?>
+
+			<?php echo $output; ?>
+		</div>
 	</div>
-	</div>
-	
