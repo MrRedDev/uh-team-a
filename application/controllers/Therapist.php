@@ -78,12 +78,16 @@ class Therapist extends CI_Controller {
                         </form>';
                     });
 
-        $crud->where('enabled', 'Y');
+        $crud->where('therapist.enabled', 'Y');
 
         $crud->fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('staffNo','roomNo'));
+
 
         $output = $crud->render();
 

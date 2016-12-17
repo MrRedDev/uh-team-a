@@ -72,7 +72,8 @@ class Room extends CI_Controller {
 
         $crud->where('enabled', 'Y');
 
-        //$crud->callback_delete('enabled', 'N');
+        // Prevent duplicating data
+        $crud->unique_fields(array('roomNo'));
 
         $output = $crud->render();
 
