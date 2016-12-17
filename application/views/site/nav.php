@@ -81,6 +81,9 @@
           <li>
             <a href="http://localhost:8888/uh-team-a/index.php/staff/staff_member">My Info</a>
           </li>
+          <li>
+            <a href="http://localhost:8888/uh-team-a/index.php/qualifications/member_qualifications">My qualifications</a>
+          </li>
         </ul>
       ';
     } endif;
