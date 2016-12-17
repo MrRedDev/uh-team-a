@@ -12,11 +12,13 @@ class Membership_model extends CI_Model
       $res = $query->row_array();
       $accessLevel = $res['accessLevel'];
       $username = $res['staffLogin'];
+      $staffnum = $res['staffNo'];
       // get details about user and return
 
       $data = array(
         'al' => $accessLevel,
         'username' => $username,
+        'staffnum' => $staffnum,
         'is_logged_in' => true,
       );
       // return true;

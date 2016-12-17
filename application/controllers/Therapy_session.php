@@ -40,7 +40,7 @@ class Therapy_session extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapySession');
-        $crud->set_subject('Therapy sessions'); 
+        $crud->set_subject('Therapy sessions');
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('accessLevel' => '3'));
@@ -60,7 +60,8 @@ class Therapy_session extends CI_Controller {
             ->display_as('staffNo', 'Therapist Name')
             ->display_as('sDate', 'Therapy Date')
             ->display_as('startTime', 'Therapy Start Time')
-            ->display_as('finishTime', 'Therapy finishTime');
+            ->display_as('finishTime', 'Therapy finishTime')
+						->display_as('enabled', 'Archive');
 
         // When adding Present radial button to archive yes or no
         $crud->callback_add_field('enabled',function () {
