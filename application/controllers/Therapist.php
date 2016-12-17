@@ -26,11 +26,8 @@ class Therapist extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-	// Staff table is called frome here
     public function therapist()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
@@ -46,11 +43,8 @@ class Therapist extends CI_Controller {
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo');
 
-        // choose the manager of the therapist
-        //$crud->set_relation_n_n('managerNo', 'staff', 'staffNo', '');
-
         	        //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
         $crud->display_as('staffNo', 'Therapist Name')
@@ -92,6 +86,41 @@ class Therapist extends CI_Controller {
         $output = $crud->render();
 
 		$this->therapist_output($output);
+    }
+
+    public function therapistReadOnly()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapist');
+        $crud->set_subject('Therapist'); 
+
+        // replace staff number with name of therapist
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+
+        // choose room number from list of rooms available
+        $crud->set_relation('roomNo', 'room', 'roomNo');
+
+                    //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
+                    //change column heading name for readability ('columm name', 'name to display in frontend column header')
+
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('phoneNo', 'Phone Number')
+            ->display_as('roomNo', 'Room Number')
+            ->display_as('managerNo', 'Manager ID Number');
+
+        $crud->where('therapist.enabled', 'Y');
+
+        $crud->unset_operations();
+
+        $output = $crud->render();
+
+        $this->therapist_output($output);
     }
 
 }

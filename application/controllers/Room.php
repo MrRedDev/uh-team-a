@@ -70,14 +70,10 @@ class Room extends CI_Controller {
                         </form>';
                     });
 
-        $crud->where('enabled', 'Y');
-
         // Prevent duplicating data
         $crud->unique_fields(array('roomNo'));
 
         $output = $crud->render();
-
-
 
 		$this->room_output($output);
 

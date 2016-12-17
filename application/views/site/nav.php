@@ -29,6 +29,10 @@
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Therapist</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Therapy Room</a></li>
+                    <!-- Therapist Qualifications Item -->
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Assign</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist &amp; Qualification</a></li>
             </ul>
           </li>
                     <!-- Qualifications Menu Items -->
@@ -40,10 +44,6 @@
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications/add">Qualifications</a></li>
-                                  <!-- Therapist Qualifications Item -->
-              <li role="separator" class="divider"></li>
-              <li class="dropdown-header">Assign</li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist &amp; Qualification</a></li>
             </ul>
           </li>
                     <!-- Therapy Menu Items -->
@@ -70,8 +70,48 @@
     } else if ($al == 2): {
       echo '
         <ul class="nav navbar-nav">
-          <li>
-            <a href="http://localhost:8888/uh-team-a/">Marketing views not set up</a>
+                  <!-- Therapy Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Therapies<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy">Therapy List</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session">Therapy Sessions</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/therapy/add">Therapies</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_session/therapy_session/add">Therapy Sessions</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/archived_therapy">Archived Therapies</a></li>
+            </ul>
+          </li>
+                <!-- Equipment Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Manage Equipment<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">View &amp; Edit</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment">Equipment List</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Add New</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipment/add">Equipment</a></li>
+            </ul>
+          </li>
+                  <!-- Therapy/Equipment Menu Items -->
+          <li class="dropdown">
+            <li>
+              <a href="http://localhost:8888/uh-team-a/index.php/therapy_equipment/therapy_equipment">Link Therapy &amp; Equipment</a>
+            </li>
+          </li>
+                  <!-- Therapists &amp; Qualifications Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Therapists<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapistReadOnly">Spa Therapists</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualifReadOnly">Therapist Qualifications</a></li>
+            </ul>
+          </li>
+            </ul>
           </li>
         </ul>
       ';
