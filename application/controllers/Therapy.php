@@ -98,6 +98,9 @@ class Therapy extends CI_Controller {
 
         $crud->where('isOffered', 'Y'); // Only show available therapies. Archived therapies available from another view
 
+        // Prevent duplicating data
+        $crud->unique_fields(array('therapyId', 'therapyName'));
+
         $output = $crud->render();
         
 		$this->therapy_output($output);

@@ -34,7 +34,7 @@ class Therapy_session extends CI_Controller {
 
         $crud = new grocery_CRUD();
 
-        //$crud->where('enabled', 'N');
+        $crud->where('therapySession.enabled', 'N');
 
         $crud->set_theme('flexigrid');
 
@@ -86,6 +86,9 @@ class Therapy_session extends CI_Controller {
         $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
 
         $crud->required_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('sessionId'));
 
         $output = $crud->render();
 

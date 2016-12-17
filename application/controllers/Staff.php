@@ -58,13 +58,6 @@ class Staff extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('staffNo', 'fName', 'lName', 'enabled', 'staffLogin', 'staffPassword', 'accessLevel');
 
-       //Commented out add field staff password as stopping password from adding to DB
-       /*$crud->callback_add_field('staffPassword',function () {
-            return '<input type="text" maxlength="4" <!--style="-webkit-text-security: square;-->">';
-        }); */
-
-        //Following function provides a user friendly checkbox with understandable terms. EG level 3 is referred to as a therapist by the SPA. Form should return the the appropriate value when checked after editing or adding
-
                 // Provide a checkbox for access level when adding user
         $crud->callback_add_field('accessLevel',function () {
                 return  '<form>
@@ -75,39 +68,10 @@ class Staff extends CI_Controller {
                         <input type="radio" value="3" name="accessLevel" id="accessLevel3" checked="checked"
                              if (isset($_POST["accessLevel"]) && $_POST["accessLevel"] == "3"): endif; /> Therapist
                         </form>';
+                });
 
-                        //PHP attempt at assigning value to return and post the value to database when a radio option is selected
-                       /* if(isset($_POST["accessLevel"])){
-                            if(!empty($_POST["1"])){
-                                if(!empty($_POST["2"])){
-                                    if(!empty($_POST["3"]));
+        $crud->unique_fields(array('staffNo','fName', 'lName', 'staffLogin'));
 
-                        }}};*/
-
-                    /*  <script>if(document.getElementById("accessLevel1").checked) {
-                        //Add code here that will show add new manager_hr details
-                        $value = 1;
-                    } elseif (document.getElementById("accessLevel2").checked) {
-                        //Add code here that will add new marketingStaff details
-                        $value = 2;
-                    } elseif document.getElementById("accessLevel3").checked) {
-                        $value = 3;
-                    }</script>';*/
-        });
-
-
-        /*
-        Need to add if statemnt to check access level is authorised. If level 3 enable this control to remove delete data button
-        $crud->unset_delete();
-        */
-
-        /*
-        Need to add if statemnt to check access level is authorised. If level 2/3 enable this control to remove create new staff/therapist data button
-        $crud->unset_add();
-        */
-
-
-        //$crud->callback_insert('enabled', 'Y');
         $output = $crud->render();
 
         $this->staff_output($output);
@@ -173,6 +137,7 @@ class Staff extends CI_Controller {
 			});
 
 			$output = $crud->render();
+
 			$this->staff_member_output($output);
 
 		}

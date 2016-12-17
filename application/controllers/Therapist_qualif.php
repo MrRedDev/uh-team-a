@@ -70,7 +70,7 @@ class Therapist_qualif extends CI_Controller {
                         </form>';
                     });
 
-        $crud->where('enabled', 'Y');
+        $crud->where('therapistQualifications.enabled', 'Y');
 
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
