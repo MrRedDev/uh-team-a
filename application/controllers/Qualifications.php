@@ -65,5 +65,6 @@ class Qualifications extends CI_Controller {
 		$this->qualifications_output($output);
 
     }
+
 }
 ?>
