@@ -76,7 +76,49 @@ class Therapist_qualif extends CI_Controller {
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
         $output = $crud->render();
-		    $this->staff_qualif_output($output);
+		
+        $this->staff_qualif_output($output);
+
+    }
+
+    public function member_qualifications()
+        {
+            // Loading view home page views, Grocery CRUD Standard Library
+
+            $crud = new grocery_CRUD();
+
+            $staffNumber = $this->session->userdata('staffnum');
+        
+
+            // read only
+            $crud->unset_operations();
+
+            $crud->set_theme('flexigrid');
+
+            //table name exact from database
+            $crud->set_table('therapistQualifications');
+
+            $crud->where('therapistQualifications.staffNo',$staffNumber);
+
+             $crud->set_subject('My Qualifications');
+
+            $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
+            $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        
+            $crud->display_as('staffNo', 'Therapist Name')
+                ->display_as('qId', 'Qualification and Level')
+                ->display_as('dateQualified', 'Date Qualified')
+                ->display_as('qExpiryDdate', 'Qualification Expiry Date');
+
+
+            $crud->where('therapistQualifications.enabled', 'Y');
+
+            $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+            $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+
+            $output = $crud->render();
+
+            $this->staff_qualif_output($output);
 
     }
 
