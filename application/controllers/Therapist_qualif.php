@@ -96,9 +96,9 @@ class Therapist_qualif extends CI_Controller {
             $crud->set_theme('flexigrid');
 
             //table name exact from database
-            $crud->set_table('therapistQualifications');
+            $crud->set_table('therapistqualifications');
 
-            $crud->where('therapistQualifications.staffNo',$staffNumber);
+            $crud->where('therapistqualifications.staffNo',$staffNumber);
 
              $crud->set_subject('My Qualifications');
 
