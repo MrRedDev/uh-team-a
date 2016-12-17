@@ -29,7 +29,6 @@ class Equipment extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-	// Staff table is called frome here
     public function equipment()
     {
 
@@ -62,10 +61,23 @@ class Equipment extends CI_Controller {
         // Prevent duplicating data
         $crud->unique_fields(array('eIdNumber','eName'));
 
+        // Check to see if qualification has expired. If it has expired flag date in red
+        $crud->callback_column('eReviewDate',array($this,'_callback_active_state'));
+
         $output = $crud->render();
 		    
         $this->equipment_output($output);
 
+    }
+
+    // Check to see if eReviewDate column is older than today. If it has expired flag date in red
+    public function _callback_active_state($value, $row)
+    {
+        if ($row->eReviewDate < date('Y-m-d')) {
+            return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>";
+        } else {
+            return $row->eReviewDate;
+        };
     }
 
 }

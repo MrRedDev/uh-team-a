@@ -47,6 +47,9 @@ class Therapist_qualif extends CI_Controller {
         $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
         $crud->callback_column('therapistQualifications.enabled', 'Y'); //Insert default value Y when adding new staff
 
+        // Check to see if qualification has expired. If it has expired flag date in red
+        $crud->callback_column('qExpiryDdate',array($this,'_callback_active_state'));
+
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
@@ -54,6 +57,15 @@ class Therapist_qualif extends CI_Controller {
 		
         $this->staff_qualif_output($output);
 
+    }
+
+    public function _callback_active_state($value, $row)
+    {
+        if ($row->qExpiryDdate < date('Y-m-d')) {
+            return "<pre style='background-color: Red;color:white;'>".$row->qExpiryDdate."</pre>";
+        } else {
+            return $row->qExpiryDdate;
+        };
     }
 
     public function member_qualifications()
