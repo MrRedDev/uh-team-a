@@ -25,17 +25,12 @@ class Therapist_qualif extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-	// Staff table is called frome here
     public function staff_qualif()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-       // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
         $crud->set_theme('flexigrid');
-
-        //table name exact from database
 
         $crud->set_table('therapistQualifications');
         //give focus on name used for operations e.g. Add Order, Delete Order
@@ -49,28 +44,8 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('dateQualified', 'Date Qualified')
             ->display_as('qExpiryDdate', 'Qualification Expiry Date');
 
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        $crud->where('therapistQualifications.enabled', 'Y');
+        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
+        $crud->callback_column('therapistQualifications.enabled', 'Y'); //Insert default value Y when adding new staff
 
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
@@ -82,43 +57,77 @@ class Therapist_qualif extends CI_Controller {
     }
 
     public function member_qualifications()
-        {
-            // Loading view home page views, Grocery CRUD Standard Library
+    {
+        // Loading view home page views, Grocery CRUD Standard Library
 
-            $crud = new grocery_CRUD();
+        $crud = new grocery_CRUD();
 
-            $staffNumber = $this->session->userdata('staffnum');
+        $staffNumber = $this->session->userdata('staffnum');
         
 
-            // read only
-            $crud->unset_operations();
+        // read only
+        $crud->unset_operations();
 
-            $crud->set_theme('flexigrid');
+        $crud->set_theme('flexigrid');
 
-            //table name exact from database
-            $crud->set_table('therapistQualifications');
+        //table name exact from database
+        $crud->set_table('therapistQualifications');
 
-            $crud->where('therapistQualifications.staffNo',$staffNumber);
+        $crud->where('therapistQualifications.staffNo',$staffNumber);
 
-             $crud->set_subject('My Qualifications');
+        $crud->set_subject('My Qualifications');
 
-            $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
-            $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
         
-            $crud->display_as('staffNo', 'Therapist Name')
-                ->display_as('qId', 'Qualification and Level')
-                ->display_as('dateQualified', 'Date Qualified')
-                ->display_as('qExpiryDdate', 'Qualification Expiry Date');
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('qId', 'Qualification and Level')
+            ->display_as('dateQualified', 'Date Qualified')
+            ->display_as('qExpiryDdate', 'Qualification Expiry Date');
 
 
-            $crud->where('therapistQualifications.enabled', 'Y');
+        $crud->where('therapistQualifications.enabled', 'Y');
 
-            $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
-            $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
 
-            $output = $crud->render();
+        $output = $crud->render();
 
-            $this->staff_qualif_output($output);
+        $this->staff_qualif_output($output);
+
+    }
+
+    public function staff_qualifReadOnly()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapistQualifications');
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->set_subject('Therapist Qualifications');
+
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+            
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('qId', 'Qualification and Level')
+            ->display_as('dateQualified', 'Date Qualified')
+            ->display_as('qExpiryDdate', 'Qualification Expiry Date');
+
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+
+        // Read Only
+        $crud->unset_operations();
+
+        $crud->where('therapistQualifications.enabled', 'Y');
+
+        $output = $crud->render();
+            
+        $this->staff_qualif_output($output);
 
     }
 
