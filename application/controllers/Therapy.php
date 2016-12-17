@@ -106,6 +106,54 @@ class Therapy extends CI_Controller {
 
     }
 
+    ////////////////////////////////
+    // read only therapy view method
+    ////////////////////////////////
+
+    public function read_only_therapy()
+    {
+        // Loading view home page views, Grocery CRUD Standard Library
+        // $this->load->view('templates/header');
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapy');
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->set_subject('Therapy');
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+
+        //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        $crud->display_as('therapyId', 'Therapy ID Number')
+            ->display_as('therapyName', 'Therapy')
+            ->display_as('tCategory', 'Therapy Category')
+            ->display_as('tType', 'Therapy Type')
+            ->display_as('tReviewDate', 'Therapy Review Date')
+            ->display_as('isOffered', 'Therapy Available');
+
+        // $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
+
+        //form validation (could match database columns set to "not null")
+        // $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+
+        $crud->where('enabled', 'Y');
+
+        $crud->where('therapy.isOffered', 'Y'); // Only show available therapies. Archived therapies available from another view
+
+        $crud->unset_operations();
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('therapyId', 'therapyName'));
+
+        $output = $crud->render();
+
+        $this->therapy_output($output);
+
+    }
+
+
     public function archived_therapy()
     {
 

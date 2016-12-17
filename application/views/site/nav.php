@@ -124,6 +124,12 @@
           <li>
             <a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/member_qualifications">My qualifications</a>
           </li>
+          <li>
+            <a href="http://localhost:8888/uh-team-a/index.php/therapy/read_only_therapy">Therapies</a>
+          </li>
+          <li>
+            <a href="http://localhost:8888/uh-team-a/index.php/equipment/read_only_equipment">Equipment</a>
+          </li>
         </ul>
       ';
     } endif;
