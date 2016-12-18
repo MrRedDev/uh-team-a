@@ -50,27 +50,10 @@ class Therapist extends CI_Controller {
         $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
-            ->display_as('managerNo', 'Manager ID Number');
+            ->display_as('managerNo', 'Manager ID Number')
+            ->display_as('enabled', 'Delete');
 
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
         $crud->where('therapist.enabled', 'Y');
 
@@ -81,6 +64,9 @@ class Therapist extends CI_Controller {
 
         // Prevent duplicating data
         $crud->unique_fields(array('staffNo','roomNo'));
+
+        $crud->unset_export();
+        $crud->unset_delete();
 
 
         $output = $crud->render();
@@ -123,5 +109,52 @@ class Therapist extends CI_Controller {
         $this->therapist_output($output);
     }
 
+    public function therapistDeleted()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapist');
+
+        $crud->set_subject('Archived Therapists'); 
+
+        // replace staff number with name of therapist
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+
+        // choose room number from list of rooms available
+        $crud->set_relation('roomNo', 'room', 'roomNo');
+
+                    //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
+                    //change column heading name for readability ('columm name', 'name to display in frontend column header')
+
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('phoneNo', 'Phone Number')
+            ->display_as('roomNo', 'Room Number')
+            ->display_as('managerNo', 'Manager ID Number')
+            ->display_as('enabled', 'Delete');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        $crud->where('therapist.enabled', 'N');
+
+        $crud->fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+
+        //form validation (could match database columns set to "not null")
+        $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('staffNo','roomNo'));
+
+        $crud->unset_add();
+        $crud->unset_delete();
+
+        $output = $crud->render();
+
+        $this->therapist_output($output);
+    }
 }
 ?>

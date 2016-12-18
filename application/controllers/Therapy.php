@@ -38,7 +38,7 @@ class Therapy extends CI_Controller {
 
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy'); 
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
         	   
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -46,59 +46,27 @@ class Therapy extends CI_Controller {
             ->display_as('tCategory', 'Therapy Category')
             ->display_as('tType', 'Therapy Type')
             ->display_as('tReviewDate', 'Therapy Review Date')
-            ->display_as('isOffered', 'Therapy Available');
+            ->display_as('isOffered', 'Therapy Available')
+            ->display_as('enabled', 'Deleted');
 
-        $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
+        $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
 
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
         $crud->where('enabled', 'Y');
         
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('isOffered',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked
-                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked
-                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('isOffered',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="isOffered" id="isOfferedY" checked
-                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="isOffered" id="isOfferedN" checked
-                             if (isset($_POST["isOffered"]) && $_POST["isOffered"] == "N"): endif; /> No
-                        </form>';
-                    });
+        $crud->field_type('isOffered', 'dropdown', array('Y' => 'Yes', 'N' => 'No'));
 
         $crud->where('isOffered', 'Y'); // Only show available therapies. Archived therapies available from another view
 
         // Prevent duplicating data
         $crud->unique_fields(array('therapyId', 'therapyName'));
+
+        $crud->unset_export();
+        $crud->unset_delete();
 
         $output = $crud->render();
         
@@ -112,8 +80,6 @@ class Therapy extends CI_Controller {
 
     public function read_only_therapy()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-        // $this->load->view('templates/header');
 
         $crud = new grocery_CRUD();
 
@@ -123,7 +89,7 @@ class Therapy extends CI_Controller {
         $crud->set_table('therapy');
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy');
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
 
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -131,12 +97,8 @@ class Therapy extends CI_Controller {
             ->display_as('tCategory', 'Therapy Category')
             ->display_as('tType', 'Therapy Type')
             ->display_as('tReviewDate', 'Therapy Review Date')
-            ->display_as('isOffered', 'Therapy Available');
-
-        // $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
-
-        //form validation (could match database columns set to "not null")
-        // $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+            ->display_as('isOffered', 'Therapy Available')
+            ->display_as('enabled', 'Delete');
 
         $crud->where('enabled', 'Y');
 
@@ -165,7 +127,7 @@ class Therapy extends CI_Controller {
         $crud->set_table('therapy');
                     //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy'); 
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
                
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -173,15 +135,17 @@ class Therapy extends CI_Controller {
             ->display_as('tCategory', 'Therapy Category')
             ->display_as('tType', 'Therapy Type')
             ->display_as('tReviewDate', 'Therapy Review Date')
-            ->display_as('isOffered', 'Therapy Available');
+            ->display_as('isOffered', 'Therapy Available')
+            ->display_as('enabled', 'Delete');
 
         $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
 
         //form validation (could match database columns set to "not null")
-        $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+        $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        $crud->where('enabled', 'Y');
         
         // When adding Present radial button to archive yes or no
         $crud->callback_add_field('isOffered',function () {
@@ -208,6 +172,53 @@ class Therapy extends CI_Controller {
         $crud->unset_add();
         $crud->unset_delete();
         $crud->unset_export();
+
+        $output = $crud->render();
+        
+        $this->therapy_output($output);
+
+    }
+
+    public function therapyDeleted()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapy');
+
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->set_subject('Therapy'); 
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
+               
+        //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        $crud->display_as('therapyId', 'Therapy ID Number')
+            ->display_as('therapyName', 'Therapy')
+            ->display_as('tCategory', 'Therapy Category')
+            ->display_as('tType', 'Therapy Type')
+            ->display_as('tReviewDate', 'Therapy Review Date')
+            ->display_as('isOffered', 'Therapy Available')
+            ->display_as('enabled', 'Deleted');
+
+        $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
+
+        //form validation (could match database columns set to "not null")
+        $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        $crud->where('enabled', 'N');
+        
+        $crud->field_type('isOffered', 'dropdown', array('Y' => 'Yes', 'N' => 'No'));
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('therapyId', 'therapyName'));
+
+        $crud->unset_add();
+        $crud->unset_delete();
+        $curd->unset_export();
 
         $output = $crud->render();
         

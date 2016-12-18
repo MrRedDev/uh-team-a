@@ -25,6 +25,7 @@
               <li class="dropdown-header">View &amp; Edit</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">Therapists</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/">Therapy Rooms</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/room/roomArchive/">Therapy Room Archive</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Therapist</a></li>
@@ -41,6 +42,7 @@
             <ul class="dropdown-menu">
             <li class="dropdown-header">View &amp; Edit</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications">Qualifications</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualificationsArchive">Archived Qualifications</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualifications/add">Qualifications</a></li>

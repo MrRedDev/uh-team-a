@@ -26,8 +26,53 @@ class Therapy_session extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-	// Staff table is called frome here
     public function therapy_session()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->where('therapySession.enabled', 'Y');
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('therapySession');
+        $crud->set_subject('Therapy sessions');
+
+        // replace staff number with name of therapist
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('accessLevel' => '3'));
+
+        // choose room number from list of rooms available
+        $crud->set_relation('therapyId', 'therapy', '{therapyName} - {tType}', array('isOffered' => 'Y'));
+
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
+	    
+        //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        $crud->display_as('sessionId', 'Therapy Session Reference')
+            ->display_as('therapyId', 'Therapy Name')
+            ->display_as('staffNo', 'Therapist Name')
+            ->display_as('sDate', 'Therapy Date')
+            ->display_as('startTime', 'Therapy Start Time')
+            ->display_as('finishTime', 'Therapy finishTime')
+			->display_as('enabled', 'Archive');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+
+        $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
+
+        $crud->required_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('sessionId'));
+
+        $output = $crud->render();
+
+		$this->therapy_session_output($output);
+    }
+
+    public function therapy_sessionDeleted()
     {
 
         $crud = new grocery_CRUD();
@@ -47,8 +92,8 @@ class Therapy_session extends CI_Controller {
         $crud->set_relation('therapyId', 'therapy', '{therapyName} - {tType}', array('isOffered' => 'Y'));
 
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
-	    
+        $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
+        
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('sessionId', 'Therapy Session Reference')
             ->display_as('therapyId', 'Therapy Name')
@@ -56,38 +101,25 @@ class Therapy_session extends CI_Controller {
             ->display_as('sDate', 'Therapy Date')
             ->display_as('startTime', 'Therapy Start Time')
             ->display_as('finishTime', 'Therapy finishTime')
-			->display_as('enabled', 'Archive');
+            ->display_as('enabled', 'Delete');
 
-        // When adding Present radial button to archive yes or no
-        $crud->callback_add_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
-        // When adding Present radial button to archive yes or no
-        $crud->callback_edit_field('enabled',function () {
-                return  '<form>
-                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
-                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
-                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
-                        </form>';
-                    });
-
-        $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
+        $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
+        $crud->edit_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
 
         $crud->required_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
 
         // Prevent duplicating data
         $crud->unique_fields(array('sessionId'));
 
+        $crud->unset_add();
+        $crud->unset_delete();
+        $crud->unset_export();
+
         $output = $crud->render();
 
-		$this->therapy_session_output($output);
+        $this->therapy_session_output($output);
     }
 
 }
