@@ -67,7 +67,8 @@ class Therapist_qualif extends CI_Controller {
     public function _callback_active_state($value, $row)
     {
         if ($row->qExpiryDdate < date('Y-m-d')) {
-            return "<pre style='background-color: Red;color:white;'>".$row->qExpiryDdate."</pre>";
+            return "<pre style='background-color: Red;color:white;'>".$row->qExpiryDdate."</pre>
+                    <p>Therapist Qualification Has Expired</p>";
         } else {
             return $row->qExpiryDdate;
         };
