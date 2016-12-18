@@ -74,18 +74,14 @@ class Equipment extends CI_Controller {
     //////////////////////////////////////
     public function read_only_equipment()
     {
-        // Loading view home page views, Grocery CRUD Standard Library
-        // $this->load->view('templates/header');
-
         $crud = new grocery_CRUD();
-
         $crud->set_theme('flexigrid');
 
         //table name exact from database
         $crud->set_table('equipment');
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Equipment');
-        $crud->columns('eIdNumber', 'eName', 'eReviewDate', 'enabled');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('eIdNumber', 'Equipment ID Number');
         $crud->display_as('eName', 'Equipment Name');
@@ -95,18 +91,9 @@ class Equipment extends CI_Controller {
 
         $crud->where('enabled', 'Y');
 
-        $crud->fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
-
-        //form validation (could match database columns set to "not null")
-        $crud->required_fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
-
-        // Prevent duplicating data
-        $crud->unique_fields(array('eIdNumber','eName'));
-
         $output = $crud->render();
 
         $this->equipment_output($output);
-
     }
 
     // Check to see if eReviewDate column is older than today. If it has expired flag date in red
