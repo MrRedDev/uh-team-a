@@ -56,6 +56,15 @@ class Therapy extends CI_Controller {
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
+        // provide dropdown list menu to choose therapy category
+        // either 'health' or 'beauty'
+
+        $crud->field_type('tCategory', 'dropdown', array('health' => 'health', 'beauty'=> 'beauty'));
+
+        // provide dropdown list menu to choose therapy type
+        // either 'individual' or group
+        $crud->field_type('tType', 'dropdown', array('individual'=> 'individual', 'group' => 'group'));
+
         $crud->where('enabled', 'Y');
         
         $crud->field_type('isOffered', 'dropdown', array('Y' => 'Yes', 'N' => 'No'));
