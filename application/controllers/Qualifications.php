@@ -50,6 +50,11 @@ class Qualifications extends CI_Controller {
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
+        // provide dropdown list menu to choose values for qulifications level
+        // due to constraint on values in database:
+        // 'basic', 'intermediate', 'advanced'
+        $crud->field_type('qLevel', 'dropdown', array('basic' => 'basic', 'intermediate' => 'intermediate', 'advanced' => 'advanced'));
+
         $crud->fields('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
 
         //form validation (could match database columns set to "not null")

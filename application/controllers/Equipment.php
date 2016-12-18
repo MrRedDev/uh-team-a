@@ -31,7 +31,6 @@ class Equipment extends CI_Controller {
 
     public function equipment()
     {
-
         $crud = new grocery_CRUD();
 
         $crud->set_theme('flexigrid');
@@ -47,13 +46,19 @@ class Equipment extends CI_Controller {
         $crud->display_as('eIdNumber', 'Equipment ID Number')
             ->display_as('eName', 'Equipment Name')
             ->display_as('eReviewDate', 'Review Date')
-            ->display_as('enabled', 'Delete');
+            ->display_as('enabled', 'Delete')
+            ->display_as('eMntValue', 'Maintenance Value');
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        // display dropdown menu for equipment maintenance value
+        // allowed values: 'consumable', 'shared'
+
+        $crud->field_type('eMntValue', 'dropdown', array('consumable' => 'consumable', 'shared' => 'shared'));
         
         $crud->where('enabled', 'Y');
 
-        $crud->fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
+        $crud->fields('eIdNumber', 'eName', 'eReviewDate', 'eMntValue', 'enabled');
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
