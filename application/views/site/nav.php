@@ -63,7 +63,7 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy/archived_therapy">Archived Therapies</a></li>
             </ul>
           </li>
-                    <!-- Qualifications Menu Items -->
+                    <!-- Custom SQL Report Menu Items -->
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="">Custom SQL Reports<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -71,7 +71,7 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_popularity/therapy_popularity">Therapy Popularity</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Equipment Reports</li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php///">Pending Equipment Reviews </a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment_pending_review/equipment_pending_review/">Pending Equipment Review</a></li>
             </ul>
           </li>
         </ul>
@@ -118,6 +118,17 @@
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapistReadOnly">Spa Therapists</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualifReadOnly">Therapist Qualifications</a></li>
+            </ul>
+          </li>
+                  <!-- Custom SQL Report Menu Items -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Custom SQL Reports<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li class="dropdown-header">Therapy Reports</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapy_popularity/therapy_popularity">Therapy Popularity</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Equipment Reports</li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/equipment_pending_review/equipment_pending_review/">Pending Equipment Review</a></li>
             </ul>
           </li>
             </ul>
