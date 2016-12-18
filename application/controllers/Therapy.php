@@ -80,16 +80,13 @@ class Therapy extends CI_Controller {
 
     public function read_only_therapy()
     {
-
         $crud = new grocery_CRUD();
-
         $crud->set_theme('flexigrid');
 
         //table name exact from database
         $crud->set_table('therapy');
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy');
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
 
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -99,6 +96,9 @@ class Therapy extends CI_Controller {
             ->display_as('tReviewDate', 'Therapy Review Date')
             ->display_as('isOffered', 'Therapy Available')
             ->display_as('enabled', 'Delete');
+
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
+
 
         $crud->where('enabled', 'Y');
 
@@ -112,7 +112,6 @@ class Therapy extends CI_Controller {
         $output = $crud->render();
 
         $this->therapy_output($output);
-
     }
 
 
@@ -223,7 +222,6 @@ class Therapy extends CI_Controller {
         $output = $crud->render();
         
         $this->therapy_output($output);
-
     }
 
 }

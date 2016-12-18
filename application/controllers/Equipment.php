@@ -77,9 +77,7 @@ class Equipment extends CI_Controller {
     //////////////////////////////////////
     public function read_only_equipment()
     {
-
         $crud = new grocery_CRUD();
-
         $crud->set_theme('flexigrid');
 
         //table name exact from database
@@ -87,7 +85,7 @@ class Equipment extends CI_Controller {
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Equipment');
         $crud->columns('eIdNumber', 'eName', 'eReviewDate');
-
+      
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('eIdNumber', 'Equipment ID Number')
             ->display_as('eName', 'Equipment Name')
@@ -98,9 +96,6 @@ class Equipment extends CI_Controller {
         $crud->where('enabled', 'Y');
 
         $output = $crud->render();
-
-        $this->equipment_output($output);
-    }
 
     public function equipmentDeleted()
     {
@@ -143,7 +138,6 @@ class Equipment extends CI_Controller {
         $output = $crud->render();
             
         $this->equipment_output($output);
-
     }
 
     // Check to see if eReviewDate column is older than today. If it has expired flag date in red
