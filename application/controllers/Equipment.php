@@ -154,7 +154,8 @@ class Equipment extends CI_Controller {
     public function _callback_active_state($value, $row)
     {
         if ($row->eReviewDate < date('Y-m-d')) {
-            return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>";
+            return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>
+                    <p>Equipment review required</p>";
         } else {
             return $row->eReviewDate;
         };
