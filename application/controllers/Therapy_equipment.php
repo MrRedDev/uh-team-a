@@ -47,6 +47,27 @@ class Therapy_equipment extends CI_Controller {
         $crud->display_as('eIdNumber', 'Equipment');
         // specify what columns appear in the view
         $crud->columns('eIdNumber', 'therapyId');
+        $crud->required_fields('eIdNumber', 'therapyId', 'enabled');
+
+        // When adding Present radial button to archive yes or no
+        $crud->callback_add_field('enabled',function () {
+            return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+        });
+
+        // When adding Present radial button to archive yes or no
+        $crud->callback_edit_field('enabled',function () {
+            return  '<form>
+                        <input type="radio" value="Y" name="enabled" id="isOfferedY" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "Y"): endif; /> Yes
+                        <input type="radio" value="N" name="enabled" id="isOfferedN" checked
+                             if (isset($_POST["enabled"]) && $_POST["enabled"] == "N"): endif; /> No
+                        </form>';
+        });
 
         $output = $crud->render();
 
