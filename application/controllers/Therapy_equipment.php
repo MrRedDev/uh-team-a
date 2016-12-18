@@ -44,7 +44,7 @@ class Therapy_equipment extends CI_Controller {
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
-        $crud->where('enabled', 'Y');
+        $crud->where('therapyEquipment.enabled', 'Y');
 
         // display user friendly columns
         $crud->display_as('therapyId', 'Therapy')
@@ -98,18 +98,18 @@ class Therapy_equipment extends CI_Controller {
         $crud->set_relation('therapyId', 'therapy', 'therapyName');
         $crud->set_relation('eIdNumber', 'equipment', 'eName');
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapy Equipment');
+        $crud->set_subject('Deleted Therapy Equipment');
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
-        $crud->where('enabled', 'N');
+        $crud->where('therapyEquipment.enabled', 'N');
 
         // display user friendly columns
         $crud->display_as('therapyId', 'Therapy')
             ->display_as('eIdNumber', 'Equipment')
             ->display_as('enabled', 'Deleted');
         // specify what columns appear in the view
-        $crud->columns('eIdNumber', 'therapyId');
+        $crud->columns('eIdNumber', 'therapyId', 'enabled');
 
         $crud->unset_add();
         $crud->unset_delete();

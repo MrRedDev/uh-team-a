@@ -157,7 +157,7 @@ class Therapist_qualif extends CI_Controller {
 
         $crud->set_table('therapistQualifications');
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapist Qualifications');
+        $crud->set_subject('Deleted Therapist & Qualifications');
 
         $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
@@ -170,13 +170,13 @@ class Therapist_qualif extends CI_Controller {
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
-        $crud->where('therapistQualifications.enabled', 'Y');
+        $crud->where('therapistQualifications.enabled', 'N');
 
 
         // Check to see if qualification has expired. If it has expired flag date in red
         $crud->callback_column('qExpiryDdate',array($this,'_callback_active_state'));
 
-        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate','enabled');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate','enabled');
 
         $crud->unset_add();

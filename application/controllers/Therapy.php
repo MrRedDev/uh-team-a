@@ -125,8 +125,8 @@ class Therapy extends CI_Controller {
         //table name exact from database
         $crud->set_table('therapy');
                     //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapy'); 
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
+        $crud->set_subject('Deleted Therapies'); 
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
                
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -217,7 +217,7 @@ class Therapy extends CI_Controller {
 
         $crud->unset_add();
         $crud->unset_delete();
-        $curd->unset_export();
+        $crud->unset_export();
 
         $output = $crud->render();
         

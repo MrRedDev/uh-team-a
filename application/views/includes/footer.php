@@ -10,7 +10,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="http://localhost:8888/uh-team-a/index.php/staff/staffDeleted">Staff</a></li>
 				    			<li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapistDeleted">Therapists</a></li>
-				    			<li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/therapist_qualifDeleted">Therapists $amp; Qualifications</a></li>
+				    			<li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualifDeleted">Therapists &amp; Qualifications</a></li>
 				    			<li role="separator" class="divider"></li>
 				    			<li><a href="http://localhost:8888/uh-team-a/index.php/equipment/equipmentDeleted">Equipment</a></li>
 				    			<li><a href="http://localhost:8888/uh-team-a/index.php/qualifications/qualificationsDeleted">Qualifications</a></li>

@@ -119,7 +119,7 @@ class Therapist extends CI_Controller {
         //table name exact from database
         $crud->set_table('therapist');
 
-        $crud->set_subject('Archived Therapists'); 
+        $crud->set_subject('Deleted Therapists'); 
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
@@ -128,7 +128,7 @@ class Therapist extends CI_Controller {
         $crud->set_relation('roomNo', 'room', 'roomNo');
 
                     //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
+        $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
         $crud->display_as('staffNo', 'Therapist Name')

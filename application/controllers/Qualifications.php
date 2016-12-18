@@ -78,8 +78,8 @@ class Qualifications extends CI_Controller {
         $crud->set_table('qualifications');
 
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Qualifications');
-        $crud->columns('qId', 'qName', 'qLevel', 'qAccBody');
+        $crud->set_subject('Deleted Qualifications');
+        $crud->columns('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
 
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('qId', 'Qualification ID Number')
