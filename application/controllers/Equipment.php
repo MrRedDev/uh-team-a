@@ -40,7 +40,7 @@ class Equipment extends CI_Controller {
 
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Equipment');
-        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate', 'eMntValue');
 
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('eIdNumber', 'Equipment ID Number')

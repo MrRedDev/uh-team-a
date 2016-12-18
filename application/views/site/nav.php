@@ -25,14 +25,12 @@
               <li class="dropdown-header">View &amp; Edit</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist">Therapists</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/">Therapy Rooms</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist &amp; Qualification</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Add New</li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/therapist/therapist/add">Therapist</a></li>
               <li><a href="http://localhost:8888/uh-team-a/index.php/room/room/add">Therapy Room</a></li>
-                    <!-- Therapist Qualifications Item -->
-              <li role="separator" class="divider"></li>
-              <li class="dropdown-header">Assign</li>
-              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif">Therapist &amp; Qualification</a></li>
+              <li><a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/staff_qualif/add">Therapist &amp; Qualification</a></li>
             </ul>
           </li>
                     <!-- Qualifications Menu Items -->
