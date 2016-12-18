@@ -44,12 +44,12 @@ class Equipment extends CI_Controller {
         $crud->columns('eIdNumber', 'eName', 'eReviewDate');
 
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
-        $crud->display_as('eIdNumber', 'Equipment ID Number');
-        $crud->display_as('eName', 'Equipment Name');
-        $crud->display_as('eReviewDate', 'Review Date');
+        $crud->display_as('eIdNumber', 'Equipment ID Number')
+            ->display_as('eName', 'Equipment Name')
+            ->display_as('eReviewDate', 'Review Date')
+            ->display_as('enabled', 'Delete');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('enabled', 'Y'); //Insert default value Y when adding new staff
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
         
         $crud->where('enabled', 'Y');
 
@@ -63,6 +63,9 @@ class Equipment extends CI_Controller {
 
         // Check to see if qualification has expired. If it has expired flag date in red
         $crud->callback_column('eReviewDate',array($this,'_callback_active_state'));
+
+        $crud->unset_export();
+        $crud->unset_delete();
 
         $output = $crud->render();
 		    
@@ -82,10 +85,11 @@ class Equipment extends CI_Controller {
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Equipment');
         $crud->columns('eIdNumber', 'eName', 'eReviewDate');
+      
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
-        $crud->display_as('eIdNumber', 'Equipment ID Number');
-        $crud->display_as('eName', 'Equipment Name');
-        $crud->display_as('eReviewDate', 'Review Date');
+        $crud->display_as('eIdNumber', 'Equipment ID Number')
+            ->display_as('eName', 'Equipment Name')
+            ->display_as('eReviewDate', 'Review Date');
 
         $crud->unset_operations();
 
@@ -93,6 +97,46 @@ class Equipment extends CI_Controller {
 
         $output = $crud->render();
 
+    public function equipmentDeleted()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        //table name exact from database
+        $crud->set_table('equipment');
+
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->set_subject('Equipment');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
+
+                    //change column heading name for readability ('columm name', 'name to display in frontend column header')
+        $crud->display_as('eIdNumber', 'Equipment ID Number')
+            ->display_as('eName', 'Equipment Name')
+            ->display_as('eReviewDate', 'Review Date')
+            ->display_as('enabled', 'Delete');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        // Provide a visual alert if user selectes delete value Yes
+        //$crud->callback_uedit_field('enabled',array($this,'_callback_delete_confirmation'));
+        
+        $crud->where('enabled', 'N');
+
+        $crud->fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
+
+        //form validation (could match database columns set to "not null")
+        $crud->required_fields('eIdNumber', 'eName', 'eReviewDate', 'enabled');
+
+        // Prevent duplicating data
+        $crud->unique_fields(array('eIdNumber','eName'));
+
+        // Check to see if qualification has expired. If it has expired flag date in red
+        $crud->callback_column('eReviewDate',array($this,'_callback_active_state'));
+
+        $output = $crud->render();
+            
         $this->equipment_output($output);
     }
 
@@ -103,6 +147,17 @@ class Equipment extends CI_Controller {
             return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>";
         } else {
             return $row->eReviewDate;
+        };
+    }
+
+    //provide visual alert is user selects yes from the delete dropdown. This is before insert or update
+    public function _callback_delete_confirmation($value, $row)
+    {
+        if ($row->enabled = 'N') {
+            return '<pre style="background-color: Red;color:white;">'.$row->enabled.'</pre>
+                    <p> Are you sure you want to delete this entry?</p>';
+        } else {
+            return $row->enabled;
         };
     }
 

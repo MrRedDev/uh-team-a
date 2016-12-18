@@ -42,16 +42,21 @@ class Therapist_qualif extends CI_Controller {
         $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('qId', 'Qualification and Level')
             ->display_as('dateQualified', 'Date Qualified')
-            ->display_as('qExpiryDdate', 'Qualification Expiry Date');
+            ->display_as('qExpiryDdate', 'Qualification Expiry Date')
+            ->display_as('enabled', 'Delete');
 
-        $crud->unset_columns('enabled'); //Remove enabled from view, enabled is only used when disabling data instead of deleting
-        $crud->callback_column('therapistQualifications.enabled', 'Y'); //Insert default value Y when adding new staff
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        $crud->where('therapistQualifications.enabled', 'Y');
 
         // Check to see if qualification has expired. If it has expired flag date in red
         $crud->callback_column('qExpiryDdate',array($this,'_callback_active_state'));
 
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
-        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate', 'enabled');
+
+        $crud->unset_export();
+        $crud->unset_delete();
 
         $output = $crud->render();
 		
@@ -139,6 +144,47 @@ class Therapist_qualif extends CI_Controller {
 
         $output = $crud->render();
             
+        $this->staff_qualif_output($output);
+
+    }
+
+    public function staff_qualifDeleted()
+    {
+
+        $crud = new grocery_CRUD();
+
+        $crud->set_theme('flexigrid');
+
+        $crud->set_table('therapistQualifications');
+        //give focus on name used for operations e.g. Add Order, Delete Order
+        $crud->set_subject('Therapist Qualifications');
+
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        
+        $crud->display_as('staffNo', 'Therapist Name')
+            ->display_as('qId', 'Qualification and Level')
+            ->display_as('dateQualified', 'Date Qualified')
+            ->display_as('qExpiryDdate', 'Qualification Expiry Date')
+            ->display_as('enabled', 'Delete');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+
+        $crud->where('therapistQualifications.enabled', 'Y');
+
+
+        // Check to see if qualification has expired. If it has expired flag date in red
+        $crud->callback_column('qExpiryDdate',array($this,'_callback_active_state'));
+
+        $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
+        $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate','enabled');
+
+        $crud->unset_add();
+        $crud->unset_delete();
+        $crud->unset_export();
+
+        $output = $crud->render();
+        
         $this->staff_qualif_output($output);
 
     }
