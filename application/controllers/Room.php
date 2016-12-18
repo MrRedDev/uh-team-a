@@ -71,8 +71,8 @@ class Room extends CI_Controller {
         //table name exact from database
         $crud->set_table('room');
                     //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Therapy Rooms'); 
-        $crud->columns('roomNo');
+        $crud->set_subject('Deleted Therapy Rooms'); 
+        $crud->columns('roomNo', 'enabled');
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('roomNo', 'Therapy Room Number')
             ->display_as('enabled', 'Delete');

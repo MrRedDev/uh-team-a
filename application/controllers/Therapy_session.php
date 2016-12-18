@@ -64,6 +64,9 @@ class Therapy_session extends CI_Controller {
 
         $crud->required_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
 
+        $crud->unset_delete();
+        $crud->unset_export();
+
         // Prevent duplicating data
         $crud->unique_fields(array('sessionId'));
 
@@ -83,7 +86,7 @@ class Therapy_session extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapySession');
-        $crud->set_subject('Therapy sessions');
+        $crud->set_subject('Deleted Therapy sessions');
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('accessLevel' => '3'));
@@ -92,7 +95,7 @@ class Therapy_session extends CI_Controller {
         $crud->set_relation('therapyId', 'therapy', '{therapyName} - {tType}', array('isOffered' => 'Y'));
 
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
+        $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
         
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('sessionId', 'Therapy Session Reference')

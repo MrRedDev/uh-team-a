@@ -87,7 +87,7 @@ class Staff extends CI_Controller {
 		$crud->set_table('staff');
 
 		//give focus on name used for operations e.g. Add Order, Delete Order
-		$crud->set_subject('Staff');
+		$crud->set_subject('Deleted Staff');
 		$crud->columns('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel');
 		//change column heading name for readability ('columm name', 'name to display in frontend column header')
 		$crud->display_as('staffNo', 'STAFF NO.')
@@ -132,7 +132,7 @@ class Staff extends CI_Controller {
         $crud->set_table('staff');
                     //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Staff');
-        $crud->columns('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel');
+        $crud->columns('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel', 'enabled');
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('staffNo', 'STAFF NO.')
             ->display_as('fName', 'First Name')

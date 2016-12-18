@@ -96,6 +96,7 @@ class Equipment extends CI_Controller {
         $crud->where('enabled', 'Y');
 
         $output = $crud->render();
+    }
 
     public function equipmentDeleted()
     {
@@ -108,8 +109,8 @@ class Equipment extends CI_Controller {
         $crud->set_table('equipment');
 
         //give focus on name used for operations e.g. Add Order, Delete Order
-        $crud->set_subject('Equipment');
-        $crud->columns('eIdNumber', 'eName', 'eReviewDate');
+        $crud->set_subject('Deleted Equipment');
+        $crud->columns('eIdNumber', 'eName', 'eReviewDate', 'enabled');
 
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('eIdNumber', 'Equipment ID Number')
@@ -134,6 +135,10 @@ class Equipment extends CI_Controller {
 
         // Check to see if qualification has expired. If it has expired flag date in red
         $crud->callback_column('eReviewDate',array($this,'_callback_active_state'));
+
+        $crud->unset_add();
+        $crud->unset_delete();
+        $crud->unset_export();
 
         $output = $crud->render();
             
