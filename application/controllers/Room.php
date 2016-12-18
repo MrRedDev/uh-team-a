@@ -41,7 +41,7 @@ class Room extends CI_Controller {
         $crud->display_as('roomNo', 'Therapy Room Number')
             ->display_as('enabled', 'Delete');
 
-        $crud->fields('roomNo');
+        $crud->fields('roomNo', 'enabled');
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
 
