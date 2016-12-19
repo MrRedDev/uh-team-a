@@ -49,7 +49,7 @@ class Staff extends CI_Controller {
             ->display_as('sPosition', 'Staff Position')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->fields('staffNo', 'fName', 'lName', 'staffLogin', 'staffPassword', 'accessLevel', 'enabled');
 
@@ -98,11 +98,13 @@ class Staff extends CI_Controller {
             ->display_as('sPosition', 'Staff Position')
             ->display_as('enabled', 'Archived');
 
-		$crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('accessLevel', 'dropdown', array('1' => 'Manager/HR', '2' => 'Marketing', '3' => 'Therapist'));
 
-        $crud->where('enabled', 'N');
+		$crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
-        $crud->unset_delete();
+        $crud->field_type('staffPassword', 'password');
+
+        $crud->where('enabled', 'Y');
 
 		$crud->fields('fName', 'lName', 'staffLogin', 'staffPassword');
 
@@ -113,10 +115,12 @@ class Staff extends CI_Controller {
         $crud->unset_add();
         $crud->unset_delete();
         $crud->unset_export();
+        $crud->unset_back_to_list();
+        $crud->unset_edit_fields('enabled', 'accessLevel');
 
 		$output = $crud->render();
 
-		$this->staff_member_output($output);
+		$this->staff_output($output);
 
 	}
 
@@ -142,7 +146,7 @@ class Staff extends CI_Controller {
             ->display_as('sPosition', 'Staff Position')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->where('enabled', 'N');
 

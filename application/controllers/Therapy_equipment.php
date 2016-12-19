@@ -42,7 +42,7 @@ class Therapy_equipment extends CI_Controller {
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapy Equipment');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->where('therapyEquipment.enabled', 'Y');
 
@@ -100,7 +100,7 @@ class Therapy_equipment extends CI_Controller {
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Deleted Therapy Equipment');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->where('therapyEquipment.enabled', 'N');
 

@@ -54,7 +54,7 @@ class Therapy extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         // provide dropdown list menu to choose therapy category
         // either 'health' or 'beauty'
@@ -135,7 +135,7 @@ class Therapy extends CI_Controller {
         $crud->set_table('therapy');
                     //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Deleted Therapies'); 
-        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
+        $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
                
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
         $crud->display_as('therapyId', 'Therapy ID Number')
@@ -151,7 +151,7 @@ class Therapy extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->where('enabled', 'Y');
         
@@ -215,7 +215,7 @@ class Therapy extends CI_Controller {
         //form validation (could match database columns set to "not null")
         $crud->required_fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered','enabled');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->where('enabled', 'N');
         

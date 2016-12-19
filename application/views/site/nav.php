@@ -142,6 +142,9 @@
             <a href="http://localhost:8888/uh-team-a/index.php/staff/staff_member">My Info</a>
           </li>
           <li>
+            <a href="http://localhost:8888/uh-team-a/index.php/therapist/therapistReadOnly">My Therapist Info</a>
+          </li>
+          <li>
             <a href="http://localhost:8888/uh-team-a/index.php/therapist_qualif/member_qualifications">My qualifications</a>
           </li>
           <li>
@@ -176,7 +179,7 @@
               } else: {
                 echo '
                   <li class="dropdown">
-                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/login/index"><span class="glyphicon glyphicon-user"></span> ';
+                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/site/home"><span class="glyphicon glyphicon-user"></span> ';
                 echo $user;
                 echo ' Please Log In</a></li>';
               } endif;

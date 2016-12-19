@@ -45,7 +45,7 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qExpiryDdate', 'Qualification Expiry Date')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->where('therapistQualifications.enabled', 'Y');
 
@@ -81,7 +81,7 @@ class Therapist_qualif extends CI_Controller {
         $crud = new grocery_CRUD();
 
         $staffNumber = $this->session->userdata('staffnum');
-        
+        $crud->where('therapistQualifications.staffNo',$staffNumber);
 
         // read only
         $crud->unset_operations();
@@ -102,7 +102,6 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qId', 'Qualification and Level')
             ->display_as('dateQualified', 'Date Qualified')
             ->display_as('qExpiryDdate', 'Qualification Expiry Date');
-
 
         $crud->where('therapistQualifications.enabled', 'Y');
 
@@ -169,7 +168,7 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qExpiryDdate', 'Qualification Expiry Date')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->where('therapistQualifications.enabled', 'N');
 
