@@ -28,6 +28,9 @@ class Qualifications extends CI_Controller {
 
     public function qualifications()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
 
         $crud = new grocery_CRUD();
 
@@ -69,11 +72,20 @@ class Qualifications extends CI_Controller {
         $output = $crud->render();
 
 		$this->qualifications_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
 
     }
 
     public function qualificationsDeleted()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
 
         $crud = new grocery_CRUD();
 
@@ -111,6 +123,12 @@ class Qualifications extends CI_Controller {
         $output = $crud->render();
 
         $this->qualifications_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
 
     }
 

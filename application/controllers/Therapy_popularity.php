@@ -28,6 +28,9 @@ class Therapy_popularity extends CI_Controller {
 
     public function therapy_popularity()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1 || $al == 2) {
         $crud = new grocery_CRUD();
         $crud->set_theme('flexigrid');
 
@@ -41,25 +44,12 @@ class Therapy_popularity extends CI_Controller {
         $output = $crud->render();
 
         $this->therapy_popularity_output($output);
-    }
-
-    public function therapy_popularity_php()
-    {
-        $crud = new grocery_CRUD();
-        $crud->set_model('custom_query_model');
-        $crud->set_table('therapy', 'therapySession');
-        $crud->basic_model->set_query_str(' SELECT therapyName , count(sessionId) as `total number of sessions` 
-                                            from therapy t, therapySession ts
-                                            where ts.therapyId = t.therapyId
-                                            group by ts.therapyId
-                                            order by `total number of sessions` desc;');
-
-        $crud->unset_operations();
-
-
-        $output = $crud->render();
-
-        $this->therapy_popularity_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 
 }

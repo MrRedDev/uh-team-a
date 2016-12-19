@@ -28,6 +28,9 @@ class Therapy_session extends CI_Controller {
 
     public function therapy_session()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1 || $al == 2) {
 
         $crud = new grocery_CRUD();
 
@@ -37,7 +40,7 @@ class Therapy_session extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapySession');
-        $crud->set_subject('Therapy sessions');
+        $crud->set_subject('Therapy session Archive');
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('accessLevel' => '3'));
@@ -73,11 +76,19 @@ class Therapy_session extends CI_Controller {
         $output = $crud->render();
 
 		$this->therapy_session_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 
     public function therapy_sessionDeleted()
     {
-
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
         $crud = new grocery_CRUD();
 
         $crud->where('therapySession.enabled', 'N');
@@ -86,7 +97,7 @@ class Therapy_session extends CI_Controller {
 
         //table name exact from database
         $crud->set_table('therapySession');
-        $crud->set_subject('Deleted Therapy sessions');
+        $crud->set_subject('Deleted Therapy session Archives');
 
         // replace staff number with name of therapist
         $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('accessLevel' => '3'));
@@ -123,6 +134,12 @@ class Therapy_session extends CI_Controller {
         $output = $crud->render();
 
         $this->therapy_session_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 
 }

@@ -9,7 +9,7 @@
 </head>
 
   	<div class="container-fluid jumbotron">
-  	<h1>Therapy Session</h1>
+  	<h1>Therapy Session Archive</h1>
   		<div class="well">
   		
 		<?php echo $output; ?>

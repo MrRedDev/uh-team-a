@@ -161,19 +161,19 @@
       <?php if ($al == 1): {
                 echo '
                   <li class="dropdown">
-                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/staff/staff_member"><span class="glyphicon glyphicon-user"></span> ';
                 echo $user;
                 echo ' - Access level: Manager </a></li>';
               } elseif ($al == 2): {
                 echo '
                   <li class="dropdown">
-                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/staff/staff_member"><span class="glyphicon glyphicon-user"></span> ';
                 echo $user;
                 echo ' - Access level: Marketing </a></li>';
               } elseif ($al == 3): {
                 echo '
                   <li class="dropdown">
-                    <a class="navbar-link" href=""><span class="glyphicon glyphicon-user"></span> ';
+                    <a class="navbar-link" href="http://localhost:8888/uh-team-a/index.php/staff/staff_member"><span class="glyphicon glyphicon-user"></span> ';
                 echo $user;
                 echo ' - Access level: Therapist </a></li>';
               } else: {
