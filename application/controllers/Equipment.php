@@ -183,8 +183,12 @@ class Equipment extends CI_Controller {
     {
         if ($row->eReviewDate < date('Y-m-d')) {
             return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>
+                    <p>URGENT Equipment review required</p>";
+        } if ($row->eReviewDate < date('Y-m-d', strtotime('3 months'))) {
+            return "<pre style='background-color: #ffc200'>".$row->eReviewDate."</pre>
                     <p>Equipment review required</p>";
-        } else {
+        }
+        else {
             return $row->eReviewDate;
         };
     }
@@ -193,8 +197,8 @@ class Equipment extends CI_Controller {
     public function _callback_delete_confirmation($value, $row)
     {
         if ($row->enabled = 'N') {
-            return '<pre style="background-color: Red;color:white;">'.$row->enabled.'</pre>
-                    <p> Are you sure you want to delete this entry?</p>';
+           return "<pre style='background-color: Red; color:white;'>".$row->eReviewDate."</pre>
+                    <p>UREGENT Equipment review required</p>";
         } else {
             return $row->enabled;
         };
