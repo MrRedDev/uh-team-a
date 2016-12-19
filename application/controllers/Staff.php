@@ -29,6 +29,9 @@ class Staff extends CI_Controller {
 	// Staff table is called frome here
     public function staff()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
         // Loading view home page views, Grocery CRUD Standard Library
 
         $crud = new grocery_CRUD();
@@ -70,12 +73,17 @@ class Staff extends CI_Controller {
         $output = $crud->render();
 
         $this->staff_output($output);
+    } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 
 	public function staff_member()
 	{
-	// Loading view home page views, Grocery CRUD Standard Library
-
+       
 		$crud = new grocery_CRUD();
 
 		$staffNumber = $this->session->userdata('staffnum');
@@ -126,6 +134,9 @@ class Staff extends CI_Controller {
 
     public function staffDeleted()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
         // Loading view home page views, Grocery CRUD Standard Library
 
         $crud = new grocery_CRUD();
@@ -170,6 +181,12 @@ class Staff extends CI_Controller {
         $output = $crud->render();
 
         $this->staff_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 }
 ?>

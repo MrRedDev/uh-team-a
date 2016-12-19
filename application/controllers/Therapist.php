@@ -28,6 +28,9 @@ class Therapist extends CI_Controller {
 
     public function therapist()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
 
         $crud = new grocery_CRUD();
 
@@ -73,14 +76,26 @@ class Therapist extends CI_Controller {
         $output = $crud->render();
 
 		$this->therapist_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 
     public function therapistReadOnly()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        
         $crud = new grocery_CRUD();
 
+        //Check to see if user is marketing or therapist
+        if ($al == 3) {
         $staffNumber = $this->session->userdata('staffnum');
         $crud->where('therapist.staffNo',$staffNumber);
+        };
 
         $crud->set_theme('flexigrid');
 
@@ -124,6 +139,9 @@ class Therapist extends CI_Controller {
 
     public function therapistDeleted()
     {
+        $al = $this->session->userdata('al');
+        //Checking if user has permission to view table
+        if ($al == 1) {
 
         $crud = new grocery_CRUD();
 
@@ -169,6 +187,12 @@ class Therapist extends CI_Controller {
         $output = $crud->render();
 
         $this->therapist_output($output);
+        } else {
+        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+                                                                <script>function goBack() {
+                                                                        window.history.back();
+                                                                        }</script>';
+    };
     }
 }
 ?>
