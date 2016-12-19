@@ -43,5 +43,24 @@ class Therapy_popularity extends CI_Controller {
         $this->therapy_popularity_output($output);
     }
 
+    public function therapy_popularity_php()
+    {
+        $crud = new grocery_CRUD();
+        $crud->set_model('custom_query_model');
+        $crud->set_table('therapy', 'therapySession');
+        $crud->basic_model->set_query_str(' SELECT therapyName , count(sessionId) as `total number of sessions` 
+                                            from therapy t, therapySession ts
+                                            where ts.therapyId = t.therapyId
+                                            group by ts.therapyId
+                                            order by `total number of sessions` desc;');
+
+        $crud->unset_operations();
+
+
+        $output = $crud->render();
+
+        $this->therapy_popularity_output($output);
+    }
+
 }
 ?>

@@ -48,7 +48,7 @@ class Qualifications extends CI_Controller {
 
         $crud->where('enabled', 'Y');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         // provide dropdown list menu to choose values for qulifications level
         // due to constraint on values in database:
@@ -94,7 +94,7 @@ class Qualifications extends CI_Controller {
 
         $crud->where('enabled', 'N');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->fields('qId', 'qName', 'qLevel', 'qAccBody', 'enabled');
 

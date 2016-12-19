@@ -43,7 +43,7 @@ class Room extends CI_Controller {
 
         $crud->fields('roomNo', 'enabled');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('roomNo', 'enabled');
@@ -79,7 +79,7 @@ class Room extends CI_Controller {
 
         $crud->fields('roomNo', 'enabled');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         //form validation (could match database columns set to "not null")
         $crud->required_fields('roomNo', 'enabled');

@@ -57,7 +57,7 @@ class Therapy_session extends CI_Controller {
             ->display_as('finishTime', 'Therapy finishTime')
 			->display_as('enabled', 'Archive');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
 
         $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');
@@ -106,7 +106,7 @@ class Therapy_session extends CI_Controller {
             ->display_as('finishTime', 'Therapy finishTime')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         $crud->fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
         $crud->edit_fields('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime', 'enabled');

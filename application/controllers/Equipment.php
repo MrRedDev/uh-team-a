@@ -49,7 +49,7 @@ class Equipment extends CI_Controller {
             ->display_as('enabled', 'Delete')
             ->display_as('eMntValue', 'Maintenance Value');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         // display dropdown menu for equipment maintenance value
         // allowed values: 'consumable', 'shared'
@@ -101,6 +101,8 @@ class Equipment extends CI_Controller {
         $crud->where('enabled', 'Y');
 
         $output = $crud->render();
+
+        $this->equipment_output($output);
     }
 
     public function equipmentDeleted()
@@ -123,7 +125,7 @@ class Equipment extends CI_Controller {
             ->display_as('eReviewDate', 'Review Date')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
 
         // Provide a visual alert if user selectes delete value Yes
         //$crud->callback_uedit_field('enabled',array($this,'_callback_delete_confirmation'));

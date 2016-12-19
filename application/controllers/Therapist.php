@@ -53,7 +53,8 @@ class Therapist extends CI_Controller {
             ->display_as('managerNo', 'Manager ID Number')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
+        $crud->field_type('managerNo', 'dropdown', array('SN9230' => 'Arthur Bryant', 'SN0772' => 'Theresa Bailey'));
 
         $crud->where('therapist.enabled', 'Y');
 
@@ -76,8 +77,10 @@ class Therapist extends CI_Controller {
 
     public function therapistReadOnly()
     {
-
         $crud = new grocery_CRUD();
+
+        $staffNumber = $this->session->userdata('staffnum');
+        $crud->where('therapist.staffNo',$staffNumber);
 
         $crud->set_theme('flexigrid');
 
@@ -98,11 +101,21 @@ class Therapist extends CI_Controller {
         $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
-            ->display_as('managerNo', 'Manager ID Number');
+            ->display_as('managerNo', 'Manager ID Number')
+            ->display_as('enabled', 'Delete');
+
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
+        $crud->field_type('managerNo', 'dropdown', array('SN9230' => 'Arthur Bryant', 'SN0772' => 'Theresa Bailey'));
 
         $crud->where('therapist.enabled', 'Y');
 
-        $crud->unset_operations();
+        //remove add new staff function
+        $crud->unset_add();
+        $crud->unset_delete();
+        $crud->unset_export();
+        $crud->unset_back_to_list();
+        $crud->unset_edit_fields('enabled');
+
 
         $output = $crud->render();
 
@@ -137,7 +150,8 @@ class Therapist extends CI_Controller {
             ->display_as('managerNo', 'Manager ID Number')
             ->display_as('enabled', 'Delete');
 
-        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No'));
+        $crud->field_type('enabled', 'dropdown', array('N' => 'Yes', 'Y' => 'No - This option will restore data to the database'));
+        $crud->field_type('managerNo', 'dropdown', array('SN9230' => 'Arthur Bryant', 'SN0772' => 'Theresa Bailey'));
 
         $crud->where('therapist.enabled', 'N');
 
