@@ -52,13 +52,13 @@ class Therapy_session extends CI_Controller {
         $crud->columns('sessionId', 'therapyId', 'staffNo', 'sDate', 'startTime', 'finishTime');
 	    
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
-        $crud->display_as('sessionId', 'Therapy Session Reference')
+        $crud->display_as('sessionId', 'Unique Therapy Session Reference')
             ->display_as('therapyId', 'Therapy Name')
             ->display_as('staffNo', 'Therapist Name')
             ->display_as('sDate', 'Therapy Date')
             ->display_as('startTime', 'Therapy Start Time')
-            ->display_as('finishTime', 'Therapy finishTime')
-			->display_as('enabled', 'Archive');
+            ->display_as('finishTime', 'Therapy Finish Time')
+			->display_as('enabled', 'Delete');
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
@@ -81,7 +81,7 @@ class Therapy_session extends CI_Controller {
                                                                 <script>function goBack() {
                                                                         window.history.back();
                                                                         }</script>';
-    };
+        };
     }
 
     public function therapy_sessionDeleted()

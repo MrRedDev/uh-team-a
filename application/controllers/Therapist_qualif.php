@@ -29,7 +29,7 @@ class Therapist_qualif extends CI_Controller {
     {
         $al = $this->session->userdata('al');
         //Checking if user has permission to view table
-        if ($al == 1) {
+        //if ($al == 1) {
         $crud = new grocery_CRUD();
 
         $crud->set_theme('flexigrid');
@@ -38,8 +38,8 @@ class Therapist_qualif extends CI_Controller {
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapist Qualifications');
 
-        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}');
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}', array('enabled' => 'Y'));
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('enabled' => 'Y'));
         
         $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('qId', 'Qualification and Level')
@@ -47,6 +47,7 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qExpiryDdate', 'Qualification Expiry Date')
             ->display_as('enabled', 'Delete');
 
+        //$crud->callback_column('therapistQualifications.enabled','Y');
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->where('therapistQualifications.enabled', 'Y');
@@ -57,18 +58,20 @@ class Therapist_qualif extends CI_Controller {
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate', 'enabled');
 
+        $crud->unset_edit_fields('staffNo');
+
         $crud->unset_export();
         $crud->unset_delete();
 
         $output = $crud->render();
 		
         $this->staff_qualif_output($output);
-        } else {
-        echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
-                                                                <script>function goBack() {
-                                                                        window.history.back();
-                                                                        }</script>';
-    };
+        //} else {
+        //echo '<p>You don\'t have permission to view this page</p> <button class="btn btn-default"onclick="goBack()">Go Back</button>
+        //                                                        <script>function goBack() {
+        //                                                                window.history.back();
+        //                                                                }</script>';
+    //};
 
     }
 
