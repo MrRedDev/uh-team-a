@@ -43,8 +43,8 @@ class Therapy extends CI_Controller {
         $crud->columns('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered');
         	   
         //change column heading name for readability ('columm name', 'name to display in frontend column header')
-        $crud->display_as('therapyId', 'Therapy ID Number')
-            ->display_as('therapyName', 'Therapy')
+        $crud->display_as('therapyId', 'Unique Therapy ID Number')
+            ->display_as('therapyName', 'Therapy Name')
             ->display_as('tCategory', 'Therapy Category')
             ->display_as('tType', 'Therapy Type')
             ->display_as('tReviewDate', 'Therapy Review Date')

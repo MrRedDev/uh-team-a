@@ -61,7 +61,7 @@ class Staff extends CI_Controller {
 
         $crud->field_type('accessLevel', 'dropdown', array('1' => 'Manager/HR', '2' => 'Marketing', '3' => 'Therapist'));
 
-        $crud->unique_fields(array('staffNo','fName', 'lName', 'staffLogin'));
+        $crud->unique_fields(array('staffNo', 'staffLogin'));
 
         $crud->field_type('staffPassword', 'password');
 
