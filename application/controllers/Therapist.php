@@ -56,6 +56,8 @@ class Therapist extends CI_Controller {
             ->display_as('managerNo', 'Manager name')
             ->display_as('enabled', 'Delete');
 
+        $crud->callback_column('therapist.enabled','Y');
+
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
         $crud->field_type('managerNo', 'dropdown', array('SN9230' => 'Arthur Bryant', 'SN0772' => 'Theresa Bailey'));
 
@@ -104,7 +106,7 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Therapist'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}');
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo');
@@ -113,7 +115,7 @@ class Therapist extends CI_Controller {
         $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
-        $crud->display_as('staffNo', 'Therapist Name')
+        $crud->display_as('staffNo', 'Therapist Id and Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
             ->display_as('managerNo', 'Manager ID Number')
@@ -153,7 +155,7 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Deleted Therapists'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}');
+        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}');
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo');
@@ -162,7 +164,7 @@ class Therapist extends CI_Controller {
         $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
                     //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
-        $crud->display_as('staffNo', 'Therapist Name')
+        $crud->display_as('staffNo', 'Therapist Id and Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
             ->display_as('managerNo', 'Manager ID Number')

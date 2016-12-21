@@ -51,6 +51,8 @@ class Therapy extends CI_Controller {
             ->display_as('isOffered', 'Therapy Available')
             ->display_as('enabled', 'Deleted');
 
+        $crud->callback_column('therapy.enabled','Y');
+
         $crud->fields('therapyId', 'therapyName', 'tCategory', 'tType', 'tReviewDate', 'isOffered', 'enabled');
 
         //form validation (could match database columns set to "not null")
