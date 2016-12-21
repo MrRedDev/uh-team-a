@@ -34,7 +34,7 @@ class Therapist_qualif extends CI_Controller {
 
         $crud->set_theme('flexigrid');
 
-        $crud->set_table('therapistqualifications');
+        $crud->set_table('therapistQualifications');
         //give focus on name used for operations e.g. Add Order, Delete Order
         $crud->set_subject('Therapist Qualifications');
 
