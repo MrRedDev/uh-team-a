@@ -41,7 +41,7 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Therapist'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('enabled' => 'Y'));
+        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}', array('enabled' => 'Y'));
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo', array('enabled' => 'Y'));
