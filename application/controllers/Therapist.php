@@ -41,7 +41,8 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Therapist'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}', array('enabled' => 'Y'));
+
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName} - {staffNo}', array('enabled' => 'Y'));
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo', array('enabled' => 'Y'));
@@ -106,7 +107,8 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Therapist'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}');
+
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName} - {staffNo}', array('enabled' => 'Y'));
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo');
@@ -127,10 +129,7 @@ class Therapist extends CI_Controller {
         $crud->where('therapist.enabled', 'Y');
 
         //remove add new staff function
-        $crud->unset_add();
-        $crud->unset_delete();
-        $crud->unset_export();
-        $crud->unset_back_to_list();
+        $crud->unset_operations();
         $crud->unset_edit_fields('enabled');
 
 
@@ -155,7 +154,8 @@ class Therapist extends CI_Controller {
         $crud->set_subject('Deleted Therapists'); 
 
         // replace staff number with name of therapist
-        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}');
+
+        $crud->set_relation('staffNo', 'staff', '{fName} {lName} - {staffNo}', array('enabled' => 'Y'));
 
         // choose room number from list of rooms available
         $crud->set_relation('roomNo', 'room', 'roomNo');
