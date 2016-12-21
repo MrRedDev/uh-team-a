@@ -58,6 +58,8 @@ class Therapist_qualif extends CI_Controller {
         $crud->columns('staffNo', 'qId', 'dateQualified', 'qExpiryDdate');
         $crud->fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate', 'enabled');
 
+        $crud->required_fields('staffNo', 'qId', 'dateQualified', 'qExpiryDdate', 'enabled');
+
         $crud->unset_edit_fields('staffNo');
 
         $crud->unset_export();
