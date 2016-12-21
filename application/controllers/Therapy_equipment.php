@@ -57,6 +57,8 @@ class Therapy_equipment extends CI_Controller {
         $crud->columns('eIdNumber', 'therapyId');
         $crud->required_fields('eIdNumber', 'therapyId', 'enabled');
 
+        $crud->callback_column('therapyEquipment.enabled','Y');
+
         $crud->unset_export();
         $crud->unset_delete();
 
