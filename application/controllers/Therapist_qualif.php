@@ -39,7 +39,7 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_subject('Therapist Qualifications');
 
         $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}', array('enabled' => 'Y'));
-        $crud->set_relation('staffNo', 'staff', '{fName} {lName}', array('enabled' => 'Y'));
+        $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}', array('enabled' => 'Y'));
         
         $crud->display_as('staffNo', 'Therapist Name')
             ->display_as('qId', 'Qualification and Level')
@@ -47,7 +47,7 @@ class Therapist_qualif extends CI_Controller {
             ->display_as('qExpiryDdate', 'Qualification Expiry Date')
             ->display_as('enabled', 'Delete');
 
-        //$crud->callback_column('therapistQualifications.enabled','Y');
+        $crud->callback_column('therapistQualifications.enabled','Y');
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));
 
         $crud->where('therapistQualifications.enabled', 'Y');
