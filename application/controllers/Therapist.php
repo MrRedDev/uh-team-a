@@ -50,10 +50,10 @@ class Therapist extends CI_Controller {
         $crud->columns('staffNo', 'phoneNo', 'roomNo', 'managerNo');
         	        //change column heading name for readability ('columm name', 'name to display in frontend column header')
 
-        $crud->display_as('staffNo', 'Therapist Name')
+        $crud->display_as('staffNo', 'Therapist Id and Name')
             ->display_as('phoneNo', 'Phone Number')
             ->display_as('roomNo', 'Room Number')
-            ->display_as('managerNo', 'Manager ID Number')
+            ->display_as('managerNo', 'Manager name')
             ->display_as('enabled', 'Delete');
 
         $crud->field_type('enabled', 'dropdown', array('N' => 'Yes - Caution, this will remove entry from the table', 'Y' => 'No'));

@@ -41,7 +41,7 @@ class Therapist_qualif extends CI_Controller {
         $crud->set_relation('qId', 'qualifications', '{qName} - {qLevel}', array('enabled' => 'Y'));
         $crud->set_relation('staffNo', 'staff', '{staffNo} {fName} {lName}', array('enabled' => 'Y'));
         
-        $crud->display_as('staffNo', 'Therapist Name')
+        $crud->display_as('staffNo', 'Therapist ID and Name')
             ->display_as('qId', 'Qualification and Level')
             ->display_as('dateQualified', 'Date Qualified')
             ->display_as('qExpiryDdate', 'Qualification Expiry Date')
