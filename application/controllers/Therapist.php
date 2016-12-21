@@ -67,7 +67,7 @@ class Therapist extends CI_Controller {
         $crud->required_fields('staffNo', 'phoneNo', 'roomNo', 'managerNo', 'enabled');
 
         // Prevent duplicating data
-        $crud->unique_fields(array('staffNo','roomNo'));
+        $crud->unique_fields(array('staffNo'));
 
         $crud->unset_export();
         $crud->unset_delete();
